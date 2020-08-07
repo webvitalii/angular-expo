@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
 import { FormTemplateComponent } from './components/form-template/form-template.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormReactiveComponent,
-    FormTemplateComponent
+    FormTemplateComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
