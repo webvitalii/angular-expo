@@ -6,7 +6,8 @@ import { FormTemplateComponent } from './components/form-template/form-template.
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', component: FormReactiveComponent },
+  //{ path: '', component: FormReactiveComponent },
+  { path: '', redirectTo: '/form-template', pathMatch: 'full' },
   { path: 'form-template', component: FormTemplateComponent },
   { path: 'form-reactive', component: FormReactiveComponent },
   { path: 'not-found', component: NotFoundComponent },
