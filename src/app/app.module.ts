@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
 import { FormTemplateComponent } from './components/form-template/form-template.component';
 import { NavComponent } from './components/nav/nav.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FormReactiveComponent,
     FormTemplateComponent,
     NavComponent,
-    NotFoundComponent
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
