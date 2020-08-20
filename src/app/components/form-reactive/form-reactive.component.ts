@@ -12,6 +12,12 @@ export class FormReactiveComponent implements OnInit {
 
   userForm: FormGroup;
 
+  private formDefaults = {
+    'username': 'default-username',
+    'email': '',
+    'gender': 'male'
+  };
+
   genderList = {
     'male': 'Male',
     'female': 'Female'
@@ -27,11 +33,13 @@ export class FormReactiveComponent implements OnInit {
         [Validators.required, Validators.email]),
       'gender': new FormControl(null, Validators.required)
     });
+    this.userForm.setValue(this.formDefaults);
   }
 
   onSubmit() {
-    this.userDataEvt.emit(this.userForm.value);
-    this.userForm.reset();
+    //this.userDataEvt.emit(this.userForm.value);
+    console.log(this.userForm.value);
+    this.userForm.reset(this.formDefaults);
   }
 
   originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {

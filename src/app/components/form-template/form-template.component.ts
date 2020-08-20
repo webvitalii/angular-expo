@@ -6,11 +6,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./form-template.component.scss']
 })
 export class FormTemplateComponent implements OnInit {
-  modelData = {
-    'username': '',
+  private formDefaults = {
+    'username': 'default-username',
     'email': '',
-    'gender': ''
+    'gender': 'male'
   };
+  modelData = { ...this.formDefaults };
 
   @Output() userDataEvt = new EventEmitter<object>();
 
@@ -20,8 +21,9 @@ export class FormTemplateComponent implements OnInit {
   }
 
   onSubmit(formObj: any) {
-    this.userDataEvt.emit(this.modelData);
-    formObj.reset();
+    //this.userDataEvt.emit(this.modelData);
+    console.log(this.modelData);
+    formObj.reset(this.formDefaults);
   }
 
 }
