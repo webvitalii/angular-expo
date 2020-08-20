@@ -4,6 +4,13 @@
         <div class="row mb-3">
             <div class="col-4">
                 <label for="inputUsernameId" class="form-label">Username</label>
+                <div>Validators:</div>
+                <ul>
+                    <li>Required</li>
+                    <li>Max length is 15</li>
+                    <li>Pattern: a-z,A-Z,0-9,-_</li>
+                    <li>Custom: cannot be {{ forbiddenUsernames }}</li>
+                </ul>
             </div>
             <div class="col-8">
                 <input 
@@ -24,11 +31,21 @@
                 <div
                 *ngIf="userForm.get('username').errors?.maxlength" 
                 class="invalid-feedback">15 symbols maximum.</div>
+                <div
+                *ngIf="userForm.get('username').errors?.usernameForbidden" 
+                class="invalid-feedback">Username cannot be {{ forbiddenUsernames }}</div>
+                
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-4">
                 <label for="inputEmailId" class="form-label">Email</label>
+                <div>Validators:</div>
+                <ul>
+                    <li>Required</li>
+                    <li>Email</li>
+                    <li>Custom async (3sec): cannot be test@test.com</li>
+                </ul>
             </div>
             <div class="col-8">
                 <input 
@@ -46,6 +63,9 @@
                 <div
                 *ngIf="userForm.get('email').errors?.email" 
                 class="invalid-feedback">Email is not valid.</div>
+                <div
+                *ngIf="userForm.get('email').errors?.emailForbidden" 
+                class="invalid-feedback">Email cannot be test@test.com.</div>
             </div>
         </div>
         <div class="row mb-3">
