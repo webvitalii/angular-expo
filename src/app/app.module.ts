@@ -9,13 +9,16 @@ import { FormTemplateComponent } from './components/form-template/form-template.
 import { NavComponent } from './components/nav/nav.component';
 import { ErrorComponent } from './components/error/error.component';
 
+import { ObservablesComponent } from './components/observables/observables.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     FormReactiveComponent,
     FormTemplateComponent,
     NavComponent,
-    ErrorComponent
+    ErrorComponent,
+    ObservablesComponent
   ],
   imports: [
     BrowserModule,
