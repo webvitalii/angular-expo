@@ -10,6 +10,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { ErrorComponent } from './components/error/error.component';
 
 import { ObservablesComponent } from './components/observables/observables.component';
+import { PipesComponent } from './components/pipes/pipes.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ObservablesComponent } from './components/observables/observables.compo
     FormTemplateComponent,
     NavComponent,
     ErrorComponent,
-    ObservablesComponent
+    ObservablesComponent,
+    PipesComponent
   ],
   imports: [
     BrowserModule,
