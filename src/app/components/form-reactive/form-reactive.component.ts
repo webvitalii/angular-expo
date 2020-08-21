@@ -52,9 +52,9 @@ export class FormReactiveComponent implements OnInit {
     return 0;
   }
 
-  customFormValidator(control: FormControl) {
+  customFormValidator(control: FormControl): {[s: string]: boolean} {
     if(this.forbiddenUsernames.indexOf(control.value) !== -1) {
-      return {'usernameForbidden': true};
+      return {'usernameForbidden': true}; // form control is invalid
     }
     return null; // form control is valid
   }
