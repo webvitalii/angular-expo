@@ -11,6 +11,7 @@ import { ErrorComponent } from './components/error/error.component';
 
 import { ObservablesComponent } from './components/observables/observables.component';
 import { PipesComponent } from './components/pipes/pipes.component';
+import { WrapperPipe } from './components/pipes/wrapper.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PipesComponent } from './components/pipes/pipes.component';
     NavComponent,
     ErrorComponent,
     ObservablesComponent,
-    PipesComponent
+    PipesComponent,
+    WrapperPipe
   ],
   imports: [
     BrowserModule,

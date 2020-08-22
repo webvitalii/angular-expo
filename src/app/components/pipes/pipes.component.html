@@ -61,3 +61,13 @@
     <li>demoObservable$ original: <strong>{{ demoObservable$ }}</strong></li>
     <li>demoObservable$ | async: <strong>{{ demoObservable$ | async }}</strong></li>
 </ul>
+
+
+<h3>Custom pipe</h3>
+
+<ul>
+    <li>demoString original: <strong>{{ demoString }}</strong></li>
+    <li>demoString | wrapper: <strong>{{ demoString | wrapper }}</strong></li>
+    <li>demoString | wrapper:'pre-': <strong>{{ demoString | wrapper:'pre-' }}</strong></li>
+    <li>demoString | wrapper:'pre-':'-post': <strong>{{ demoString | wrapper:'pre-':'-post' }}</strong></li>
+</ul>
