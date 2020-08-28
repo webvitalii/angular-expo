@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { ObservablesComponent } from './components/observables/observables.component';
 import { PipesComponent } from './components/pipes/pipes.component';
 import { WrapperPipe } from './components/pipes/wrapper.pipe';
+import { HttpComponent } from './components/http/http.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { WrapperPipe } from './components/pipes/wrapper.pipe';
     ErrorComponent,
     ObservablesComponent,
     PipesComponent,
-    WrapperPipe
+    WrapperPipe,
+    HttpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule
   ],
