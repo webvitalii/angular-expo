@@ -10,18 +10,18 @@ export class AppComponent {
   title = 'angular-demos';
 
   userData = {
-    'username': '',
-    'email': '',
-    'gender': ''
+    username: '',
+    email: '',
+    gender: ''
   };
-  hasData: boolean = false;
+  hasData = false;
 
   getUserData($event: any) {
     this.hasData = true;
     this.userData = { ...$event }; // copy data inside of the object
   }
 
-  originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
+  originalOrder = ( a: KeyValue<number, string>, b: KeyValue<number, string> ): number => {
     return 0;
   }
 }

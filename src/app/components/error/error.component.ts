@@ -12,7 +12,7 @@ export class ErrorComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.errorMessage = this.route.snapshot.data['message'];
+    this.errorMessage = this.route.snapshot.data.message;
     // In case the data is dynamic
     /*this.route.data.subscribe(
       (data: Data) => {

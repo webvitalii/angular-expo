@@ -14,14 +14,14 @@ export class ObservablesComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit(): void {
-    this.customObservable$ = Observable.create(observer => {
+    this.customObservable$ = new Observable(observer => {
       let count = 0;
       setInterval(() => {
         observer.next(count);
-        if(count === 8) {
+        if (count === 8) {
           observer.complete();
         }
-        if(count > 9) {
+        if (count > 9) {
           observer.error(new Error('Count is greater than 9'));
         }
         count++;

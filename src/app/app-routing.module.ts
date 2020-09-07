@@ -9,7 +9,7 @@ import { HttpComponent } from './components/http/http.component';
 import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
-  //{ path: '', component: FormReactiveComponent },
+  // { path: '', component: FormReactiveComponent },
   { path: '', redirectTo: '/form-template', pathMatch: 'full' },
   { path: 'form-template', component: FormTemplateComponent },
   { path: 'form-reactive', component: FormReactiveComponent },
