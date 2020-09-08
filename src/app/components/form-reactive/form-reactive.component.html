@@ -13,28 +13,28 @@
                 </ul>
             </div>
             <div class="col-8">
-                <input 
-                type="text" 
-                class="form-control" 
-                id="inputUsernameId" 
+                <input
+                type="text"
+                class="form-control"
+                id="inputUsernameId"
                 formControlName="username"
                 [ngClass]="{
                     'is-valid': userForm.controls.username.valid && userForm.controls.username.touched,
                     'is-invalid': userForm.controls.username.invalid && userForm.controls.username.touched
                 }">
                 <div
-                *ngIf="!userForm.get('username').valid && userForm.get('username').touched" 
+                *ngIf="!userForm.get('username').valid && userForm.get('username').touched"
                 class="invalid-feedback">Username is required.</div>
                 <div
-                *ngIf="userForm.get('username').errors?.pattern" 
+                *ngIf="userForm.get('username').errors?.pattern"
                 class="invalid-feedback">Only letters, numbers, dashes and undersores are allowed.</div>
                 <div
-                *ngIf="userForm.get('username').errors?.maxlength" 
+                *ngIf="userForm.get('username').errors?.maxlength"
                 class="invalid-feedback">15 symbols maximum.</div>
                 <div
-                *ngIf="userForm.get('username').errors?.usernameForbidden" 
+                *ngIf="userForm.get('username').errors?.usernameForbidden"
                 class="invalid-feedback">Username cannot be {{ forbiddenUsernames }}</div>
-                
+
             </div>
         </div>
         <div class="row mb-3">
@@ -48,23 +48,23 @@
                 </ul>
             </div>
             <div class="col-8">
-                <input 
-                type="text" 
-                class="form-control" 
-                id="inputEmailId" 
+                <input
+                type="text"
+                class="form-control"
+                id="inputEmailId"
                 formControlName="email"
                 [ngClass]="{
                     'is-valid': userForm.controls.email.valid && userForm.controls.email.touched,
                     'is-invalid': userForm.controls.email.invalid && userForm.controls.email.touched
                 }">
                 <div
-                *ngIf="!userForm.get('email').valid && userForm.get('email').touched" 
+                *ngIf="!userForm.get('email').valid && userForm.get('email').touched"
                 class="invalid-feedback">Email is required.</div>
                 <div
-                *ngIf="userForm.get('email').errors?.email" 
+                *ngIf="userForm.get('email').errors?.email"
                 class="invalid-feedback">Email is not valid.</div>
                 <div
-                *ngIf="userForm.get('email').errors?.emailForbidden" 
+                *ngIf="userForm.get('email').errors?.emailForbidden"
                 class="invalid-feedback">Email cannot be test@test.com.</div>
             </div>
         </div>
@@ -82,20 +82,20 @@
                     'is-invalid': userForm.controls.gender.invalid && userForm.controls.gender.touched
                 }">
                     <option></option>
-                    <option 
-                    *ngFor="let genderItem of genderList | keyvalue : originalOrder" 
+                    <option
+                    *ngFor="let genderItem of genderList | keyvalue : originalOrder"
                     [value]="genderItem.key">{{ genderItem.value }}</option>
                 </select>
                 <div
-                *ngIf="!userForm.get('gender').valid && userForm.get('gender').touched" 
+                *ngIf="!userForm.get('gender').valid && userForm.get('gender').touched"
                 class="invalid-feedback">Gender is required.</div>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-4"></div>
             <div class="col-8">
-                <button 
-                type="submit" 
+                <button
+                type="submit"
                 class="btn btn-primary btn-lg "
                 [disabled]="!userForm.valid"
                 >Submit</button>
