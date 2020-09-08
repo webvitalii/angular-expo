@@ -6,12 +6,12 @@
                 <label for="inputUsername" class="form-label">Username</label>
             </div>
             <div class="col-8">
-                <input 
+                <input
                 required
-                type="text" 
-                class="form-control" 
-                id="inputUsername" 
-                name="username" 
+                type="text"
+                class="form-control"
+                id="inputUsername"
+                name="username"
                 [(ngModel)]="modelData.username">
             </div>
         </div>
@@ -20,18 +20,18 @@
                 <label for="inputEmail" class="form-label">Email</label>
             </div>
             <div class="col-8">
-                <input 
+                <input
                 required
-                type="text" 
-                class="form-control" 
-                id="inputEmail" 
-                name="email" 
+                type="text"
+                class="form-control"
+                id="inputEmail"
+                name="email"
                 [(ngModel)]="modelData.email">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-4">
-                <label for="inputGender" class="form-label">Sex</label>
+                <label for="inputGender" class="form-label">Gender</label>
             </div>
             <div class="col-8">
                 <select
@@ -49,9 +49,9 @@
         <div class="row mb-3">
             <div class="col-4"></div>
             <div class="col-8">
-                <button 
-                type="submit" 
-                class="btn btn-primary btn-lg" 
+                <button
+                type="submit"
+                class="btn btn-primary btn-lg"
                 [disabled]="!dataForm.form.valid"
                 >Submit</button>
             </div>

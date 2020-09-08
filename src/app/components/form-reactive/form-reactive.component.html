@@ -70,7 +70,7 @@
         </div>
         <div class="row mb-3">
             <div class="col-4">
-                <label for="inputGenderId" class="form-label">Sex</label>
+                <label for="inputGenderId" class="form-label">Gender</label>
             </div>
             <div class="col-8">
                 <select
@@ -88,7 +88,7 @@
                 </select>
                 <div
                 *ngIf="!userForm.get('gender').valid && userForm.get('gender').touched" 
-                class="invalid-feedback">Sex is required.</div>
+                class="invalid-feedback">Gender is required.</div>
             </div>
         </div>
         <div class="row mb-3">
