@@ -14,6 +14,9 @@ import { ObservablesComponent } from './components/observables/observables.compo
 import { PipesComponent } from './components/pipes/pipes.component';
 import { WrapperPipe } from './components/pipes/wrapper.pipe';
 import { HttpComponent } from './components/http/http.component';
+import { HiliteDirective } from './directives/hilite.directive';
+import { DirectivesComponent } from './components/directives/directives.component';
+import { StylesDirective } from './directives/styles.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { HttpComponent } from './components/http/http.component';
     ObservablesComponent,
     PipesComponent,
     WrapperPipe,
-    HttpComponent
+    HttpComponent,
+    HiliteDirective,
+    DirectivesComponent,
+    StylesDirective
   ],
   imports: [
     BrowserModule,
