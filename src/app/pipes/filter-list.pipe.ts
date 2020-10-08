@@ -11,7 +11,7 @@ export class FilterListPipe implements PipeTransform {
     filterTerm = filterTerm.toString().toLowerCase();
 
     return items.filter(item => {
-      return item['to'].some(subitem => {
+      return item[filterCol].some(subitem => {
         return subitem.toLowerCase().includes(filterTerm);
       });
     });
