@@ -1,0 +1,19 @@
+.form-control--filter {
+  min-width: 80px;
+}
+
+.form-control--date {
+  width: 180px;
+}
+
+.table-list {
+  max-width: 100%;
+}
+
+.table-list th {
+  vertical-align: top;
+}
+
+:host ::ng-deep .search-highlight {
+  background-color: #f1f12b;
+}

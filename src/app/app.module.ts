@@ -19,6 +19,14 @@ import { DirectivesComponent } from './components/directives/directives.componen
 import { StylesDirective } from './directives/styles.directive';
 import { IfnotDirective } from './directives/ifnot.directive';
 
+import { ViewerComponent } from './components/viewer/viewer.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FilterListPipe } from './pipes/filter-list.pipe';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { PaginationPipe } from './pipes/pagination.pipe';
+import { FilterDatePipe } from './pipes/filter-date.pipe';
+import { HighlightPipe } from './pipes/highlight.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +41,14 @@ import { IfnotDirective } from './directives/ifnot.directive';
     HiliteDirective,
     DirectivesComponent,
     StylesDirective,
-    IfnotDirective
+    IfnotDirective,
+    ViewerComponent,
+    FilterPipe,
+    FilterListPipe,
+    PaginationComponent,
+    PaginationPipe,
+    FilterDatePipe,
+    HighlightPipe
   ],
   imports: [
     BrowserModule,

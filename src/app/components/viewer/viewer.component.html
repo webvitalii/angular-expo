@@ -1,0 +1,75 @@
+
+<ng-container *ngIf="(items | filterList:'users':termUsers
+| filter:'title':termTitle | filter:'text':termText
+| filterDate:'to':termDateTo | filterDate:'from':termDateFrom) as itemsFiltered">
+
+  <h3>Custom table with filters and pagination</h3>
+
+  <table class="table table-striped table-hover table-list">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">
+          Users
+          <input type="text" [(ngModel)]="termUsers" (ngModelChange)="activePage = 1"
+          placeholder="Filter by users..." title="Filter by users..."
+          class="form-control form-control--filter" />
+        </th>
+        <th scope="col">
+          Title
+          <input type="text" [(ngModel)]="termTitle" (ngModelChange)="activePage = 1"
+          placeholder="Filter by title..." title="Filter by title..."
+          class="form-control form-control--filter" />
+        </th>
+        <th scope="col">
+          Text
+          <input type="text" [(ngModel)]="termText" (ngModelChange)="activePage = 1"
+          placeholder="Filter by text..." title="Filter by text..."
+          class="form-control form-control--filter" />
+        </th>
+        <th scope="col">
+          Date
+          <input type="date" [(ngModel)]="termDateFrom" (ngModelChange)="activePage = 1"
+          placeholder="From..." title="From..."
+          class="form-control form-control--date" />
+          <input type="date" [(ngModel)]="termDateTo" (ngModelChange)="activePage = 1"
+          placeholder="To..." title="To..."
+          class="form-control form-control--date" />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of itemsFiltered | pagination:activePage:itemsPerPage">
+        <td *ngFor="let col of columns" [ngClass]="'table-list__td-' + col">
+
+          <div *ngIf="col == 'users'">
+            {{ row[col] | json }}
+          </div>
+
+          <div *ngIf="col == 'title'">
+            <!-- property binding is required for highlight pipe -->
+            <span [innerHTML]="row[col] | highlight: termTitle"></span>
+          </div>
+
+          <div *ngIf="col == 'text'">
+            <!-- property binding is required for highlight pipe -->
+            <span [innerHTML]="row[col] | highlight: termText"></span>
+          </div>
+
+          <div *ngIf="col == 'date'">
+            {{ row[col] | date:'medium' }}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 *ngIf="!itemsFiltered.length" class="text-center">
+    No items to show.
+  </h3>
+
+  <div>
+    <app-pagination [totalRecords]="itemsFiltered.length"
+    [recordsPerPage]="itemsPerPage" (onPageChange)="displayActivePage($event)"></app-pagination>
+  </div>
+
+</ng-container>
