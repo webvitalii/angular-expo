@@ -14,17 +14,19 @@ export class StylesDirective {
   }
 
   @HostListener('mouseenter') onEnter() {
-    //this.renderer.setStyle(this.elemRef.nativeElement, 'color', this.styles.color);
+    // renderer is used if you are planning to run app on native mobile device instead of browser
+    // this.renderer.setStyle(this.elemRef.nativeElement, 'color', this.styles.color);
     this.elemRef.nativeElement.style.color = this.styles?.color || this.stylesDefault.color;
-    //this.renderer.setStyle(this.elemRef.nativeElement, 'border', this.styles.border);
+    // this.renderer.setStyle(this.elemRef.nativeElement, 'border', this.styles.border);
     this.elemRef.nativeElement.style.border = this.styles?.border || this.stylesDefault.border;
 
   }
 
   @HostListener('mouseleave') onLeave() {
-    //this.renderer.setStyle(this.elemRef.nativeElement, 'color', null);
+    // renderer is used if you are planning to run app on native mobile device instead of browser
+    // this.renderer.setStyle(this.elemRef.nativeElement, 'color', null);
     this.elemRef.nativeElement.style.color = null;
-    //this.renderer.setStyle(this.elemRef.nativeElement, 'border', null);
+    // this.renderer.setStyle(this.elemRef.nativeElement, 'border', null);
     this.elemRef.nativeElement.style.border = null;
   }
 

@@ -13,11 +13,15 @@ export class HiliteDirective {
   }
 
   @HostListener('mouseenter') onEnter() {
-    this.renderer.setStyle(this.elemRef.nativeElement, 'color', this.color);
+    // renderer is used if you are planning to run app on native mobile device instead of browser
+    // this.renderer.setStyle(this.elemRef.nativeElement, 'color', this.color);
+    this.elemRef.nativeElement.style.color = this.color;
   }
 
   @HostListener('mouseleave') onLeave() {
-    this.renderer.setStyle(this.elemRef.nativeElement, 'color', null);
+    // renderer is used if you are planning to run app on native mobile device instead of browser
+    // this.renderer.setStyle(this.elemRef.nativeElement, 'color', null);
+    this.elemRef.nativeElement.style.color = null;
   }
 
 }

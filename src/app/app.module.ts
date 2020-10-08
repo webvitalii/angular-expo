@@ -17,6 +17,7 @@ import { HttpComponent } from './components/http/http.component';
 import { HiliteDirective } from './directives/hilite.directive';
 import { DirectivesComponent } from './components/directives/directives.component';
 import { StylesDirective } from './directives/styles.directive';
+import { IfnotDirective } from './directives/ifnot.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { StylesDirective } from './directives/styles.directive';
     HttpComponent,
     HiliteDirective,
     DirectivesComponent,
-    StylesDirective
+    StylesDirective,
+    IfnotDirective
   ],
   imports: [
     BrowserModule,
