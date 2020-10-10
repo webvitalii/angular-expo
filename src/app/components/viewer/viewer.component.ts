@@ -18,11 +18,11 @@ export class ViewerComponent implements OnInit {
   itemsPerPage = 5;
   items = [];
 
-  constructor(public data: DataService) { }
+  constructor(public dataService: DataService) { }
 
   ngOnInit(): void {
-    console.log(this.data.jsonData);
-    this.items = this.data.jsonData;
+    this.items = this.dataService.data;
+    console.log(this.dataService.data);
   }
 
   displayActivePage(activePageNumber: number): void {

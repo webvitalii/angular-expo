@@ -42,16 +42,17 @@
         <td *ngFor="let col of columns" [ngClass]="'table-list__td-' + col">
 
           <div *ngIf="col == 'users'">
-            {{ row[col] | json }}
+            <!-- attribute binding is required for highlight pipe -->
+            <span [innerHTML]="row[col] | json | highlight: termUsers"></span>
           </div>
 
           <div *ngIf="col == 'title'">
-            <!-- property binding is required for highlight pipe -->
+            <!-- attribute binding is required for highlight pipe -->
             <span [innerHTML]="row[col] | highlight: termTitle"></span>
           </div>
 
           <div *ngIf="col == 'text'">
-            <!-- property binding is required for highlight pipe -->
+            <!-- attribute binding is required for highlight pipe -->
             <span [innerHTML]="row[col] | highlight: termText"></span>
           </div>
 

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
-  public jsonData: any = [
+  public data: any = [
     {
       'title': 'Brown fox',
       'text': 'The quick brown fox jumps over the lazy dog.',
