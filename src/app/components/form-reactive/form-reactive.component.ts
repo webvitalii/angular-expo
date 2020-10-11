@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { KeyValue } from '@angular/common';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { CustomValidators } from './custom.validators';
 
 @Component({
   selector: 'app-form-reactive',
@@ -24,7 +24,7 @@ export class FormReactiveComponent implements OnInit {
     female: 'Female'
   };
 
-  forbiddenUsernames = ['admin', 'user', 'test'];
+  forbiddenUsernamesL = ['admin', 'user', 'test'];
 
   constructor() { }
 
@@ -33,17 +33,20 @@ export class FormReactiveComponent implements OnInit {
       username: new FormControl(null,
         [Validators.required, Validators.maxLength(15),
           Validators.pattern('^[a-zA-Z0-9\-\_]+$'),
-          this.customFormValidator.bind(this)]), // bind() to fix 'this' ref
+          CustomValidators.forbiddenUsernames
+        ]),
       email: new FormControl(null,
         [Validators.required, Validators.email],
-        [this.customAsyncFormValidator]),
-      gender: new FormControl(null, Validators.required)
+        [CustomValidators.forbiddenEmailAsync]),
+      gender: new FormControl(null, Validators.required),
+      tags: new FormArray([])
     });
-    this.userForm.setValue(this.formDefaults);
+    this.userForm.patchValue(this.formDefaults);
   }
 
   onSubmit() {
     // this.userDataEvt.emit(this.userForm.value);
+    console.log(this.userForm);
     console.log(this.userForm.value);
     this.userForm.reset(this.formDefaults);
   }
@@ -52,24 +55,13 @@ export class FormReactiveComponent implements OnInit {
     return 0;
   }
 
-  customFormValidator(control: FormControl): {[s: string]: boolean} {
-    if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
-      return {usernameForbidden: true}; // form control is invalid
-    }
-    return null; // form control is valid
+  addTagControl() {
+    const tagControl = new FormControl('', Validators.required);
+    (<FormArray> this.userForm.get('tags')).push(tagControl);
   }
 
-  customAsyncFormValidator(control: FormControl): Promise<any> | Observable<any> {
-    const promise = new Promise<any>((resolve, reject) => {
-      setTimeout(() => {
-        if (control.value === 'test@test.com') {
-          resolve({emailForbidden: true});
-        } else {
-          resolve(null);
-        }
-      }, 3000);
-    });
-    return promise;
+  getTagControls() {
+    return (<FormArray> this.userForm.get('tags')).controls;
   }
 
 }

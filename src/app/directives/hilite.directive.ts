@@ -4,7 +4,7 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/
   selector: '[appHilite]'
 })
 export class HiliteDirective {
-  @Input('appHilite') color: string = 'green';
+  @Input('appHilite') color = 'green';
 
   constructor(private elemRef: ElementRef, private renderer: Renderer2) { }
 

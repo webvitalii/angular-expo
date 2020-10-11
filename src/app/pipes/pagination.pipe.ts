@@ -7,8 +7,8 @@ export class PaginationPipe implements PipeTransform {
 
   transform(items: Array<any>, activePage: number, perPage: number): any {
     if ( !items ) { return []; }
-    let from = (activePage - 1) * perPage;
-    let to = from + perPage;
+    const from = (activePage - 1) * perPage;
+    const to = from + perPage;
 
     return items.slice(from, to);
   }

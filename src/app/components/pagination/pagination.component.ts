@@ -11,7 +11,7 @@ export class PaginationComponent implements OnChanges {
   @Input() totalRecords = 0;
   @Input() recordsPerPage = 0;
 
-  @Output() onPageChange: EventEmitter<number> = new EventEmitter();
+  @Output() pageChange: EventEmitter<number> = new EventEmitter();
 
   public pages: number [] = [];
   activePage: number;
@@ -20,7 +20,7 @@ export class PaginationComponent implements OnChanges {
     const pageCount = this.getPageCount();
     this.pages = this.getArrayOfPage(pageCount);
     this.activePage = 1;
-    this.onPageChange.emit(1);
+    this.pageChange.emit(1);
   }
 
   private  getPageCount(): number {
@@ -40,7 +40,7 @@ export class PaginationComponent implements OnChanges {
     const pageArray = [];
 
     if (pageCount > 0) {
-      for(let i = 1 ; i <= pageCount ; i++) {
+      for (let i = 1; i <= pageCount; i++) {
         pageArray.push(i);
       }
     }
@@ -51,7 +51,7 @@ export class PaginationComponent implements OnChanges {
   onClickPage(pageNumber: number): void {
     if (pageNumber >= 1 && pageNumber <= this.pages.length) {
       this.activePage = pageNumber;
-      this.onPageChange.emit(this.activePage);
+      this.pageChange.emit(this.activePage);
     }
   }
 }

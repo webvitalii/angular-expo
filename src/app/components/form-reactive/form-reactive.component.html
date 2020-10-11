@@ -9,7 +9,7 @@
                     <li>Required</li>
                     <li>Max length is 15</li>
                     <li>Pattern: a-z,A-Z,0-9,-_</li>
-                    <li>Custom validator: cannot be {{ forbiddenUsernames }}</li>
+                    <li>Custom validator: cannot be {{ forbiddenUsernamesL }}</li>
                 </ul>
             </div>
             <div class="col-8">
@@ -30,10 +30,12 @@
                 class="invalid-feedback">Only letters, numbers, dashes and undersores are allowed.</div>
                 <div
                 *ngIf="userForm.get('username').errors?.maxlength"
-                class="invalid-feedback">15 symbols maximum.</div>
+                class="invalid-feedback">{{ userForm.get('username').errors?.maxlength.requiredLength }}
+                symbols maximum.
+                {{ userForm.get('username').errors?.maxlength.actualLength }} symbols entered.</div>
                 <div
-                *ngIf="userForm.get('username').errors?.usernameForbidden"
-                class="invalid-feedback">Username cannot be {{ forbiddenUsernames }}</div>
+                *ngIf="userForm.get('username').errors?.forbiddenUsername"
+                class="invalid-feedback">Username cannot be {{ userForm.get('username').value }}</div>
 
             </div>
         </div>
@@ -64,8 +66,8 @@
                 *ngIf="userForm.get('email').errors?.email"
                 class="invalid-feedback">Email is not valid.</div>
                 <div
-                *ngIf="userForm.get('email').errors?.emailForbidden"
-                class="invalid-feedback">Email cannot be test@test.com.</div>
+                *ngIf="userForm.get('email').errors?.forbiddenEmail"
+                class="invalid-feedback">Email cannot be {{ userForm.get('email').value }}.</div>
             </div>
         </div>
         <div class="row mb-3">
@@ -92,11 +94,26 @@
             </div>
         </div>
         <div class="row mb-3">
+          <div class="col-4">
+              <label class="form-label">Tags (dynamic field via FormArray)</label>
+          </div>
+          <div class="col-8" formGroupName="tags">
+              <div *ngFor="let tagControl of getTagControls(); let idx = index">
+                <input
+                type="text"
+                class="form-control"
+                [placeholder]="idx"
+                [formControlName]="idx">
+              </div>
+              <button type="button" class="btn btn-secondary" (click)="addTagControl()">Add Tag</button>
+          </div>
+        </div>
+        <div class="row mb-3">
             <div class="col-4"></div>
             <div class="col-8">
                 <button
                 type="submit"
-                class="btn btn-primary btn-lg "
+                class="btn btn-primary btn-lg"
                 [disabled]="!userForm.valid"
                 >Submit</button>
             </div>
