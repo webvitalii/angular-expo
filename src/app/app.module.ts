@@ -28,6 +28,7 @@ import { FilterDatePipe } from './pipes/filter-date.pipe';
 import { HighlightPipe } from './pipes/highlight.pipe';
 import { HomeComponent } from './components/home/home.component';
 import { SwitchComponent } from './components/switch/switch.component';
+import { TodosComponent } from './components/todos/todos.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { SwitchComponent } from './components/switch/switch.component';
     PaginationPipe,
     FilterDatePipe,
     HighlightPipe,
-    HomeComponent
+    HomeComponent,
+    TodosComponent
   ],
   imports: [
     BrowserModule,

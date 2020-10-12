@@ -1,0 +1,39 @@
+<h3>Todos List</h3>
+
+<p>Data fetched from jsonplaceholder.typicode.com</p>
+
+<button type="button" class="btn btn-secondary" (click)="getTodos()">Fetch</button>
+
+<div class="row mt-3 mb-3">
+  <div class="col-auto">
+    <input type="text" [(ngModel)]="todoTitle" class="form-control">
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-primary" (click)="addTodo()">Add</button>
+  </div>
+</div>
+
+<p class="text-danger" *ngIf="error">{{ error }}</p>
+
+<div *ngIf="!loading; else todosLoading">
+  <div *ngIf="todoList.length; else todosEmpty">
+    <div class="card mb-3" *ngFor="let todo of todoList">
+      <div class="card-body">
+        <h5 class="card-title">{{ todo.title | titlecase }}</h5>
+        <p class="card-text">Completed = {{ todo.completed }}</p>
+        <div>
+          <button type="button" class="btn btn-danger"
+            (click)="removeTodo(todo.id)">Remove</button>
+          <button type="button" class="btn btn-secondary"
+            (click)="completeTodo(todo.id)">Complete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #todosLoading>
+  <h3>Loading...</h3>
+</ng-template>
+<ng-template #todosEmpty>
+  <h3>No todo items to show</h3>
+</ng-template>

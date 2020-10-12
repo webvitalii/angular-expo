@@ -8,6 +8,7 @@ import { DirectivesComponent } from './components/directives/directives.componen
 import { ObservablesComponent } from './components/observables/observables.component';
 import { PipesComponent } from './components/pipes/pipes.component';
 import { ViewerComponent } from './components/viewer/viewer.component';
+import { TodosComponent } from './components/todos/todos.component';
 import { HttpComponent } from './components/http/http.component';
 import { ErrorComponent } from './components/error/error.component';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'observables', component: ObservablesComponent },
   { path: 'pipes', component: PipesComponent },
   { path: 'viewer', component: ViewerComponent },
+  { path: 'todos', component: TodosComponent },
   { path: 'http', component: HttpComponent },
   { path: 'not-found', component: ErrorComponent, data: {message: 'Page Not Found'} },
   { path: '**', redirectTo: 'not-found' }

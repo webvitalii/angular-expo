@@ -7,7 +7,9 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
   styleUrls: ['./http.component.scss']
 })
 export class HttpComponent implements OnInit {
+
   httpData$;
+  httpPosts$;
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -15,6 +17,8 @@ export class HttpComponent implements OnInit {
     // from the url above. Then it makes the request to get that server’s response.
     // And finally, the proxy applies the Access-Control-Allow-Origin: * to that original response.
     this.httpData$ = this.http.get(`https://cors-anywhere.herokuapp.com/https://joke-api-strict-cors.appspot.com/jokes/random`);
+
+    this.httpPosts$ = this.http.get('https://jsonplaceholder.typicode.com/posts?_limit=3');
   }
 
 }
