@@ -26,6 +26,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { PaginationPipe } from './pipes/pagination.pipe';
 import { FilterDatePipe } from './pipes/filter-date.pipe';
 import { HighlightPipe } from './pipes/highlight.pipe';
+import { HomeComponent } from './components/home/home.component';
+import { SwitchComponent } from './components/switch/switch.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { HighlightPipe } from './pipes/highlight.pipe';
     HiliteDirective,
     DirectivesComponent,
     StylesDirective,
+    SwitchComponent,
     IfnotDirective,
     ViewerComponent,
     FilterPipe,
@@ -48,7 +51,8 @@ import { HighlightPipe } from './pipes/highlight.pipe';
     PaginationComponent,
     PaginationPipe,
     FilterDatePipe,
-    HighlightPipe
+    HighlightPipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

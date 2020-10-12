@@ -1,0 +1,10 @@
+<div class="container">
+  <h3>Custom switch component with binding to NgModel</h3>
+
+  <app-switch
+    [(ngModel)]="appState"
+    (ngModelChange)="handleModelChange()"
+  ></app-switch>
+
+  <p>appState: {{appState}}</p>
+</div>

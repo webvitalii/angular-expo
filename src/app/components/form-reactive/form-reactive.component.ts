@@ -60,7 +60,7 @@ export class FormReactiveComponent implements OnInit {
   }
 
   removeTagControl(tagControlIndex: number) {
-    (<FormArray> this.userForm.get('tags')).removeAt(tagControlIndex);;
+    (<FormArray> this.userForm.get('tags')).removeAt(tagControlIndex);
   }
 
   addTagControl() {
