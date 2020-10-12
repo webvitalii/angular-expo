@@ -55,13 +55,17 @@ export class FormReactiveComponent implements OnInit {
     return 0;
   }
 
+  getTagControls() {
+    return (<FormArray> this.userForm.get('tags')).controls;
+  }
+
+  removeTagControl(tagControlIndex: number) {
+    (<FormArray> this.userForm.get('tags')).removeAt(tagControlIndex);;
+  }
+
   addTagControl() {
     const tagControl = new FormControl('', Validators.required);
     (<FormArray> this.userForm.get('tags')).push(tagControl);
-  }
-
-  getTagControls() {
-    return (<FormArray> this.userForm.get('tags')).controls;
   }
 
 }

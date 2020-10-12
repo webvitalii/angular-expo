@@ -98,12 +98,18 @@
               <label class="form-label">Tags (dynamic field via FormArray)</label>
           </div>
           <div class="col-8" formGroupName="tags">
-              <div *ngFor="let tagControl of getTagControls(); let idx = index">
+              <div *ngFor="let tagControl of getTagControls(); let idx = index" class="input-group mb-3">
                 <input
                 type="text"
                 class="form-control"
                 [placeholder]="idx"
-                [formControlName]="idx">
+                [formControlName]="idx"
+                [ngClass]="{
+                  'is-valid': tagControl.valid && tagControl.touched,
+                  'is-invalid': tagControl.invalid && tagControl.touched
+                }">
+                <button type="button" class="btn btn-secondary"
+                (click)="removeTagControl(idx)">Remove</button>
               </div>
               <button type="button" class="btn btn-secondary" (click)="addTagControl()">Add Tag</button>
           </div>
