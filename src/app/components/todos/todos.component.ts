@@ -55,8 +55,7 @@ export class TodosComponent implements OnInit {
   completeTodo(todoId: number) {
     this.todosService.completeTodo(todoId)
       .subscribe(todoResponse => {
-        console.log(todoResponse)
-        let todoUpdated = this.todoList.find(todo => todo.id === todoResponse.id);
+        const todoUpdated = this.todoList.find(todo => todo.id === todoResponse.id);
         todoUpdated.completed = true;
       }, error => {
         console.log('Error from TodosComponent:', error);

@@ -4,9 +4,9 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, delay } from 'rxjs/operators';
 
 export interface TodoInterface {
-  completed: boolean,
-  title: string,
-  id?: number
+  completed: boolean;
+  title: string;
+  id?: number;
 }
 
 @Injectable({

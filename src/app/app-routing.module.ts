@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
@@ -14,7 +14,24 @@ import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  /* {
+    path: '', component: LayoutComponent, children: [
+      { path: '', redirectTo: '/', pathMatch: 'full' },
+      { path: '', component: PostsComponent },
+      { path: 'post/:id', component: PostComponent }
+    ]
+  }, */
+  {
+    path: '',
+    // lazy loading of the module
+    loadChildren: () => import('./cms/cms.module').then(m => m.CMSModule)
+  },
+  {
+    path: 'admin',
+    // lazy loading of the module
+    loadChildren: () => import('./cms-admin/cms-admin.module').then(m => m.CMSAdminModule)
+  },
   { path: 'home', component: HomeComponent },
   { path: 'form-template', component: FormTemplateComponent },
   { path: 'form-reactive', component: FormReactiveComponent },
@@ -29,7 +46,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules // lazy loading of the modules
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
