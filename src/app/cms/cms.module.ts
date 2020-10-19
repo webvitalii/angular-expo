@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
+import { CMSSharedModule } from '../cms-shared/cms-shared.module';
 
 const routesCMS: Routes = [
   {
@@ -18,7 +19,8 @@ const routesCMS: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routesCMS)
+    RouterModule.forChild(routesCMS),
+    CMSSharedModule
   ],
   exports: [
     RouterModule

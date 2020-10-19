@@ -1,6 +1,6 @@
 <section class="bg-light p-3 rounded">
     <h3 class="text-center mb-3">Reactive Form with Validation</h3>
-    <form novalidate [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="row mb-3">
             <div class="col-4">
                 <label for="inputUsernameId" class="form-label">Username</label>
@@ -19,23 +19,23 @@
                 id="inputUsernameId"
                 formControlName="username"
                 [ngClass]="{
-                    'is-valid': userForm.controls.username.valid && userForm.controls.username.touched,
-                    'is-invalid': userForm.controls.username.invalid && userForm.controls.username.touched
+                    'is-valid': form.controls.username.valid && form.controls.username.touched,
+                    'is-invalid': form.controls.username.invalid && form.controls.username.touched
                 }">
                 <div
-                *ngIf="!userForm.get('username').valid && userForm.get('username').touched"
+                *ngIf="!form.get('username').valid && form.get('username').touched"
                 class="invalid-feedback">Username is required.</div>
                 <div
-                *ngIf="userForm.get('username').errors?.pattern"
+                *ngIf="form.get('username').errors?.pattern"
                 class="invalid-feedback">Only letters, numbers, dashes and undersores are allowed.</div>
                 <div
-                *ngIf="userForm.get('username').errors?.maxlength"
-                class="invalid-feedback">{{ userForm.get('username').errors?.maxlength.requiredLength }}
+                *ngIf="form.get('username').errors?.maxlength"
+                class="invalid-feedback">{{ form.get('username').errors?.maxlength.requiredLength }}
                 symbols maximum.
-                {{ userForm.get('username').errors?.maxlength.actualLength }} symbols entered.</div>
+                {{ form.get('username').errors?.maxlength.actualLength }} symbols entered.</div>
                 <div
-                *ngIf="userForm.get('username').errors?.forbiddenUsername"
-                class="invalid-feedback">Username cannot be {{ userForm.get('username').value }}</div>
+                *ngIf="form.get('username').errors?.forbiddenUsername"
+                class="invalid-feedback">Username cannot be {{ form.get('username').value }}</div>
 
             </div>
         </div>
@@ -56,18 +56,18 @@
                 id="inputEmailId"
                 formControlName="email"
                 [ngClass]="{
-                    'is-valid': userForm.controls.email.valid && userForm.controls.email.touched,
-                    'is-invalid': userForm.controls.email.invalid && userForm.controls.email.touched
+                    'is-valid': form.controls.email.valid && form.controls.email.touched,
+                    'is-invalid': form.controls.email.invalid && form.controls.email.touched
                 }">
                 <div
-                *ngIf="!userForm.get('email').valid && userForm.get('email').touched"
+                *ngIf="!form.get('email').valid && form.get('email').touched"
                 class="invalid-feedback">Email is required.</div>
                 <div
-                *ngIf="userForm.get('email').errors?.email"
+                *ngIf="form.get('email').errors?.email"
                 class="invalid-feedback">Email is not valid.</div>
                 <div
-                *ngIf="userForm.get('email').errors?.forbiddenEmail"
-                class="invalid-feedback">Email cannot be {{ userForm.get('email').value }}.</div>
+                *ngIf="form.get('email').errors?.forbiddenEmail"
+                class="invalid-feedback">Email cannot be {{ form.get('email').value }}.</div>
             </div>
         </div>
         <div class="row mb-3">
@@ -80,8 +80,8 @@
                 id="inputGenderId"
                 formControlName="gender"
                 [ngClass]="{
-                    'is-valid': userForm.controls.gender.valid && userForm.controls.gender.touched,
-                    'is-invalid': userForm.controls.gender.invalid && userForm.controls.gender.touched
+                    'is-valid': form.controls.gender.valid && form.controls.gender.touched,
+                    'is-invalid': form.controls.gender.invalid && form.controls.gender.touched
                 }">
                     <option></option>
                     <option
@@ -89,7 +89,7 @@
                     [value]="genderItem.key">{{ genderItem.value }}</option>
                 </select>
                 <div
-                *ngIf="!userForm.get('gender').valid && userForm.get('gender').touched"
+                *ngIf="!form.get('gender').valid && form.get('gender').touched"
                 class="invalid-feedback">Gender is required.</div>
             </div>
         </div>
@@ -120,11 +120,11 @@
                 <button
                 type="submit"
                 class="btn btn-primary btn-lg"
-                [disabled]="!userForm.valid"
+                [disabled]="form.invalid"
                 >Submit</button>
             </div>
         </div>
     </form>
 
-    <pre>{{ userForm.value | json }}</pre>
+    <pre>{{ form.value | json }}</pre>
 </section>

@@ -1,3 +1,17 @@
-<p>layout-admin works!</p>
+<ul class="nav">
+  <li class="nav-item">
+      <a class="nav-link" routerLink="/admin"
+      routerLinkActive="active text-dark"
+      [routerLinkActiveOptions]="{exact: true}">Admin</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/posts"
+      routerLinkActive="active text-dark">Posts</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/logout"
+      routerLinkActive="active text-dark">Logout</a>
+  </li>
+</ul>
 
 <router-outlet></router-outlet>
