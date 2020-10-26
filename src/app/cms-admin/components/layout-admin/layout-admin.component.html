@@ -1,6 +1,6 @@
-<ul class="nav">
+<ul class="nav" *ngIf="authService.isAuthenticated()">
   <li class="nav-item">
-      <a class="nav-link" routerLink="/admin"
+      <a class="nav-link" routerLink="/admin/dashboard"
       routerLinkActive="active text-dark"
       [routerLinkActiveOptions]="{exact: true}">Admin</a>
   </li>

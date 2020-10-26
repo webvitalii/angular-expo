@@ -1,5 +1,10 @@
 <section class="bg-light p-3 rounded">
   <h3 class="text-center mb-3">Login</h3>
+
+<div class="alert alert-danger" *ngIf="authService.errorMessage$ | async as errorMessage">
+  {{ errorMessage }}
+</div>
+
   <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
 
       <div class="row mb-3">
@@ -57,7 +62,7 @@
               <button
               type="submit"
               class="btn btn-primary btn-lg"
-              [disabled]="form.invalid"
+              [disabled]="form.invalid || formSubmitting"
               >Login</button>
           </div>
       </div>

@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { PostCreateComponent } from './components/post-create/post-create.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { AuthService } from './services/auth.service';
 import { CMSSharedModule } from '../cms-shared/cms-shared.module';
 
 const routesAdmin: Routes = [
@@ -41,6 +42,9 @@ const routesAdmin: Routes = [
     PostEditComponent,
     PostCreateComponent,
     LogoutComponent
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class CMSAdminModule {
