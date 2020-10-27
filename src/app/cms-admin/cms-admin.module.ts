@@ -9,6 +9,7 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { PostCreateComponent } from './components/post-create/post-create.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth.guard';
 import { CMSSharedModule } from '../cms-shared/cms-shared.module';
 
 const routesAdmin: Routes = [
@@ -17,9 +18,9 @@ const routesAdmin: Routes = [
       { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'logout', component: LogoutComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'post-create', component: PostCreateComponent },
-      { path: 'post-edit/:id', component: PostEditComponent }
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'post-create', component: PostCreateComponent, canActivate: [AuthGuard] },
+      { path: 'post-edit/:id', component: PostEditComponent, canActivate: [AuthGuard] }
     ]
   }
 ];
@@ -44,7 +45,8 @@ const routesAdmin: Routes = [
     LogoutComponent
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ]
 })
 export class CMSAdminModule {

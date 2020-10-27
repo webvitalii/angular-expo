@@ -8,14 +8,14 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable()
 export class AuthService {
   firebaseConfig = {
-    apiKey: "AIzaSyDYBz74b_nfQYQEg0kOQwAyfcHtPKkwhgo",
-    authDomain: "angular-expo.firebaseapp.com",
-    databaseURL: "https://angular-expo.firebaseio.com",
-    projectId: "angular-expo",
-    storageBucket: "angular-expo.appspot.com",
-    messagingSenderId: "197890464790",
-    appId: "1:197890464790:web:b672a510c3a1e3da44e937",
-    measurementId: "G-JRR3YMLGBT"
+    apiKey: 'AIzaSyDYBz74b_nfQYQEg0kOQwAyfcHtPKkwhgo',
+    authDomain: 'angular-expo.firebaseapp.com',
+    databaseURL: 'https://angular-expo.firebaseio.com',
+    projectId: 'angular-expo',
+    storageBucket: 'angular-expo.appspot.com',
+    messagingSenderId: '197890464790',
+    appId: '1:197890464790:web:b672a510c3a1e3da44e937',
+    measurementId: 'G-JRR3YMLGBT'
   };
 
   url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=';
@@ -35,7 +35,7 @@ export class AuthService {
       this.logout();
       return null;
     }
-    return localStorage.getItem('firebase-auth-token');;
+    return localStorage.getItem('firebase-auth-token');
   }
 
   login(user: UserInterface): Observable<any> {
@@ -80,7 +80,7 @@ export class AuthService {
   setToken(response: FirebaseAuthInterface) {
     console.log('setToken response = ', response);
     const msSinceEpochUTC = new Date().getTime();
-    const expirySeconds = parseInt(response.expiresIn);
+    const expirySeconds = parseInt(response.expiresIn, 10);
     const expiryDate = new Date(msSinceEpochUTC + expirySeconds * 1000);
     localStorage.setItem('firebase-auth-token', response.idToken);
     localStorage.setItem('firebase-auth-expires', expiryDate.toString());
