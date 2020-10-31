@@ -1,1 +1,46 @@
-<p>post-create works!</p>
+<h1>Create New Post</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <div>
+    <label for="inputTitleId" class="form-label">Title</label>
+  </div>
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="inputTitleId"
+      formControlName="title"
+      [ngClass]="{
+          'is-valid': form.controls.title.valid && form.controls.title.touched,
+          'is-invalid': form.controls.title.invalid && form.controls.title.touched
+      }">
+    <div
+      *ngIf="!form.get('title').valid && form.get('title').touched"
+      class="invalid-feedback">Title is required.</div>
+  </div>
+
+  <div>
+    <label for="inputTextId" class="form-label">Text</label>
+  </div>
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="inputTextId"
+      formControlName="text"
+      [ngClass]="{
+          'is-valid': form.controls.text.valid && form.controls.text.touched,
+          'is-invalid': form.controls.text.invalid && form.controls.text.touched
+      }">
+    <div
+      *ngIf="!form.get('text').valid && form.get('text').touched"
+      class="invalid-feedback">Text is required.</div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-lg btn-primary"
+    [disabled]="form.invalid"
+  >Create Post</button>
+</form>

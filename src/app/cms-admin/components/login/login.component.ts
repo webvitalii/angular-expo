@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      if (params['loggedOut']) {
-        this.message = 'You have been logged out.'
+      if (params.loggedOut) {
+        this.message = 'You have been logged out.';
       }
     });
 
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(user).subscribe((response) => {
       console.log(response);
       this.form.reset();
-      this.router.navigate(['/admin', 'dashboard']);
+      this.router.navigate(['/admin']);
       this.formSubmitting = false;
     }, () => {
       this.formSubmitting = false;

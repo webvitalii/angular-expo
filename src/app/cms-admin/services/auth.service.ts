@@ -4,19 +4,12 @@ import { UserInterface } from '../../cms-shared/interfaces/user.interface';
 import { FirebaseAuthInterface } from '../../cms-shared/interfaces/firebase-auth.interface';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
-  firebaseConfig = {
-    apiKey: 'AIzaSyDYBz74b_nfQYQEg0kOQwAyfcHtPKkwhgo',
-    authDomain: 'angular-expo.firebaseapp.com',
-    databaseURL: 'https://angular-expo.firebaseio.com',
-    projectId: 'angular-expo',
-    storageBucket: 'angular-expo.appspot.com',
-    messagingSenderId: '197890464790',
-    appId: '1:197890464790:web:b672a510c3a1e3da44e937',
-    measurementId: 'G-JRR3YMLGBT'
-  };
 
   url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=';
 
@@ -39,7 +32,7 @@ export class AuthService {
   }
 
   login(user: UserInterface): Observable<any> {
-    return this.http.post(`${this.url}${this.firebaseConfig.apiKey}`, user)
+    return this.http.post(`${this.url}${environment.firebaseConfig.apiKey}`, user)
       .pipe(
         tap(this.setToken),
         catchError(this.handleError.bind(this))
