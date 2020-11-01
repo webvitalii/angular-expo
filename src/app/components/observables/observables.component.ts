@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
-import { Subscription, Observable } from 'rxjs';
+import { Subscription, Observable, interval } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-observables',
@@ -8,8 +8,12 @@ import { Subscription, Observable } from 'rxjs';
   styleUrls: ['./observables.component.scss']
 })
 export class ObservablesComponent implements OnInit, OnDestroy {
-  private customObservableSub: Subscription;
+  private customObsSub: Subscription;
+  private intervalSub: Subscription;
+
   customObservable$: Observable<any>;
+  interval$: Observable<any>;
+  intervalOutput: string = '';
 
   constructor() { }
 
@@ -28,17 +32,42 @@ export class ObservablesComponent implements OnInit, OnDestroy {
       }, 1000);
     });
 
-    this.customObservableSub = this.customObservable$.subscribe(data => {
-      console.log('customObservable$ value = ', data);
-    }, error => {
-      console.log('customObservable$ error = ', error);
-    }, () => {
-      console.log('customObservable$ completed');
-    });
+    this.customObsSub = this.customObservable$.subscribe(
+      (data) => { // next callback
+        console.log('customObservable$ value = ', data);
+      },
+      (error) => { // error callback
+        console.log('customObservable$ error = ', error);
+      },
+      () => { // complete callback
+        console.log('customObservable$ completed');
+      }
+    );
+
+    this.interval$ = interval(1000);
+
+    this.intervalSub = this.interval$
+      .pipe(
+        filter((value) => value % 2 === 0),
+        map((value) => `${value} seconds passed`)
+      )
+      .subscribe((value) => {
+        this.intervalOutput = value;
+        console.log(value);
+      });
+  }
+
+  intervalUnsubscribe() {
+    this.intervalSub.unsubscribe();
   }
 
   ngOnDestroy(): void {
-    this.customObservableSub.unsubscribe();
+    if (this.customObsSub) {
+      this.customObsSub.unsubscribe();
+    }
+    if (this.intervalSub) {
+      this.intervalSub.unsubscribe();
+    }
   }
 
 }

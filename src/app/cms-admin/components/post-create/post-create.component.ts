@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PostInterface } from '../../../cms-shared/interfaces/post.interface';
+import { PostService } from '../../../cms-shared/services/post.service';
 
 @Component({
   selector: 'app-post-create',
@@ -6,10 +9,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-create.component.scss']
 })
 export class PostCreateComponent implements OnInit {
+  form: FormGroup;
 
-  constructor() { }
+  constructor(
+    private postService: PostService
+  ) {
+  }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      title: new FormControl(null, Validators.required),
+      text: new FormControl(null, Validators.required)
+    });
+  }
+
+  submit() {
+    if (this.form.invalid) {
+      return false;
+    }
+
+    const post: PostInterface = {
+      title: this.form.value.title,
+      text: this.form.value.text,
+      date: new Date()
+    };
+
+    this.postService.create(post).subscribe(() => {
+      this.form.reset();
+      console.log('Post was created.');
+    });
   }
 
 }

@@ -1,5 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -27,6 +27,13 @@ import { FilterListPipe } from './pipes/filter-list.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { HighlightPipe } from './pipes/highlight.pipe';
 import { PaginationPipe } from './pipes/pagination.pipe';
+import { AuthInterceptor } from './cms-admin/services/auth.interceptor';
+
+const AUTH_INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor
+};
 
 @NgModule({
   declarations: [
@@ -61,7 +68,7 @@ import { PaginationPipe } from './pipes/pagination.pipe';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AUTH_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

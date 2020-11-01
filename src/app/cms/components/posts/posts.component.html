@@ -4,7 +4,7 @@
     <h4>
       <a [routerLink]="['/post', post.id]">{{ post.title }}</a>
     </h4>
-    <div class="card-subtitle mb-2 text-muted">{{ post.author }} | {{ post.date | date:'short' }}</div>
+    <div class="card-subtitle mb-2 text-muted">{{ post.date | date:'short' }}</div>
 
     <div>{{ post.text }}</div>
   </div>

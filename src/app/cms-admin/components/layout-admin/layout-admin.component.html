@@ -1,12 +1,11 @@
-<ul class="nav">
-  <li class="nav-item">
-      <a class="nav-link" routerLink="/admin"
-      routerLinkActive="active text-dark"
-      [routerLinkActiveOptions]="{exact: true}">Admin</a>
-  </li>
+<ul class="nav" *ngIf="authService.isAuthenticated()">
   <li class="nav-item">
       <a class="nav-link" routerLink="/admin/posts"
       routerLinkActive="active text-dark">Posts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/post-create"
+    routerLinkActive="active text-dark">Create Post</a>
   </li>
   <li class="nav-item">
       <a class="nav-link" routerLink="/admin/logout"
