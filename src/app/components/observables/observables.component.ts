@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, Observable, interval } from 'rxjs';
+import { Subscription, Observable, interval, Subject } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
 @Component({
@@ -10,10 +10,14 @@ import { map, filter } from 'rxjs/operators';
 export class ObservablesComponent implements OnInit, OnDestroy {
   private customObsSub: Subscription;
   private intervalSub: Subscription;
+  private subjectSub: Subscription;
 
   customObservable$: Observable<any>;
   interval$: Observable<any>;
   intervalOutput: string = '';
+  subject$: Subject<any> = new Subject<any>();
+  subjectCounter = 0;
+  subjectMsg = '';
 
   constructor() { }
 
@@ -48,17 +52,27 @@ export class ObservablesComponent implements OnInit, OnDestroy {
 
     this.intervalSub = this.interval$
       .pipe(
-        filter((value) => value % 2 === 0),
-        map((value) => `${value} seconds passed`)
+        filter((data) => data % 2 === 0),
+        map((data) => `${data} seconds passed`)
       )
-      .subscribe((value) => {
-        this.intervalOutput = value;
-        console.log(value);
+      .subscribe((data) => {
+        this.intervalOutput = data;
+        console.log(data);
+      });
+
+    this.subjectSub = this.subject$
+      .subscribe((data) => {
+        this.subjectMsg = data;
       });
   }
 
   intervalUnsubscribe() {
     this.intervalSub.unsubscribe();
+  }
+
+  next() {
+    this.subjectCounter++;
+    this.subject$.next(this.subjectCounter);
   }
 
   ngOnDestroy(): void {
@@ -67,6 +81,9 @@ export class ObservablesComponent implements OnInit, OnDestroy {
     }
     if (this.intervalSub) {
       this.intervalSub.unsubscribe();
+    }
+    if (this.subjectSub) {
+      this.subjectSub.unsubscribe();
     }
   }
 
