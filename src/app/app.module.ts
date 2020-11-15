@@ -2,7 +2,6 @@ import { NgModule, Provider } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DirectivesComponent } from './components/directives/directives.component';
@@ -28,6 +27,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { HighlightPipe } from './pipes/highlight.pipe';
 import { PaginationPipe } from './pipes/pagination.pipe';
 import { AuthInterceptor } from './cms-admin/services/auth.interceptor';
+import { SubjectsComponent } from './components/subjects/subjects.component';
 
 const AUTH_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -59,7 +59,8 @@ const AUTH_INTERCEPTOR_PROVIDER: Provider = {
     FilterDatePipe,
     HighlightPipe,
     HomeComponent,
-    TodosComponent
+    TodosComponent,
+    SubjectsComponent
   ],
   imports: [
     BrowserModule,

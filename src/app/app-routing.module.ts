@@ -6,6 +6,7 @@ import { FormReactiveComponent } from './components/form-reactive/form-reactive.
 import { FormTemplateComponent } from './components/form-template/form-template.component';
 import { DirectivesComponent } from './components/directives/directives.component';
 import { ObservablesComponent } from './components/observables/observables.component';
+import { SubjectsComponent } from './components/subjects/subjects.component';
 import { PipesComponent } from './components/pipes/pipes.component';
 import { ViewerComponent } from './components/viewer/viewer.component';
 import { TodosComponent } from './components/todos/todos.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'form-reactive', component: FormReactiveComponent },
   { path: 'directives', component: DirectivesComponent },
   { path: 'observables', component: ObservablesComponent },
+  { path: 'subjects', component: SubjectsComponent },
   { path: 'pipes', component: PipesComponent },
   { path: 'viewer', component: ViewerComponent },
   { path: 'todos', component: TodosComponent },

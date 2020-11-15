@@ -1,0 +1,61 @@
+<h3>Subject (hot)</h3>
+
+<div class="input-group mb-3">
+  <button (click)="subjectSubscribe()" class="btn btn-primary">Subscribe #{{ subjectSubscriberIndex }}</button>
+  <button (click)="subjectEmitValue()" class="btn btn-secondary">Emit value</button>
+  <button (click)="subjectComplete()" class="btn btn-success">Complete</button>
+</div>
+
+<ol>
+  <li *ngFor="let subjectSubscriberValues of subjectSubscribersValues; let i = index">
+    Subscriber #{{ i+1 }} values: {{ subjectSubscriberValues.join() }}
+  </li>
+</ol>
+
+
+
+<h3>BehaviorSubject (cold) (0 is the initial value)</h3>
+
+<div class="input-group mb-3">
+  <button (click)="behaviorSubjectSubscribe()" class="btn btn-primary">Subscribe #{{ behaviorSubjectSubscriberIndex }}</button>
+  <button (click)="behaviorSubjectEmitValue()" class="btn btn-secondary">Emit value</button>
+  <button (click)="behaviorSubjectComplete()" class="btn btn-success">Complete</button>
+</div>
+
+<ol>
+  <li *ngFor="let behaviorSubjectSubscriberValues of behaviorSubjectSubscribersValues; let i = index">
+    Subscriber #{{ i+1 }} values: {{ behaviorSubjectSubscriberValues.join() }}
+  </li>
+</ol>
+
+
+
+<h3>ReplaySubject (cold) (stores last 3 values)</h3>
+
+<div class="input-group mb-3">
+  <button (click)="replaySubjectSubscribe()" class="btn btn-primary">Subscribe #{{ replaySubjectSubscriberIndex }}</button>
+  <button (click)="replaySubjectEmitValue()" class="btn btn-secondary">Emit value</button>
+  <button (click)="replaySubjectComplete()" class="btn btn-success">Complete</button>
+</div>
+
+<ol>
+  <li *ngFor="let replaySubjectSubscriberValues of replaySubjectSubscribersValues; let i = index">
+    Subscriber #{{ i+1 }} values: {{ replaySubjectSubscriberValues.join() }}
+  </li>
+</ol>
+
+
+
+<h3>AsyncSubject (emits value after being complete)</h3>
+
+<div class="input-group mb-3">
+  <button (click)="asyncSubjectSubscribe()" class="btn btn-primary">Subscribe #{{ asyncSubjectSubscriberIndex }}</button>
+  <button (click)="asyncSubjectEmitValue()" class="btn btn-secondary">Emit value</button>
+  <button (click)="asyncSubjectComplete()" class="btn btn-success">Complete</button>
+</div>
+
+<ol>
+  <li *ngFor="let asyncSubjectSubscriberValues of asyncSubjectSubscribersValues; let i = index">
+    Subscriber #{{ i+1 }} values: {{ asyncSubjectSubscriberValues.join() }}
+  </li>
+</ol>
