@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { PostInterface } from '../../../cms-shared/interfaces/post.interface';
@@ -14,15 +14,22 @@ export class PostComponent implements OnInit {
   post$: Observable<PostInterface>;
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private postService: PostService
   ) { }
 
   ngOnInit(): void {
-    this.post$ = this.route.params
+    this.post$ = this.activatedRoute.paramMap
+      .pipe(switchMap((params: ParamMap) => {
+        return this.postService.getById(params.get('id'));
+      }));
+
+    /* Old way. Params attribute might be deprecated in the future
+    https://angular.io/guide/deprecations#activatedroute-params-and-queryparams-properties
+    this.post$ = this.activatedRoute.params
       .pipe(switchMap((params: Params) => {
         return this.postService.getById(params.id);
-      }));
+      })); */
   }
 
 }

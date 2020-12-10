@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { PostService } from '../../../cms-shared/services/post.service';
@@ -19,13 +19,26 @@ export class PostEditComponent implements OnInit, OnDestroy {
   updateSub: Subscription;
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private postService: PostService
   ) {
   }
 
   ngOnInit() {
-    this.route.params.pipe(
+    this.activatedRoute.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        return this.postService.getById(params.get('id'));
+      })
+    ).subscribe((post: PostInterface) => {
+      this.post = post;
+      this.form = new FormGroup({
+        title: new FormControl(post.title, Validators.required),
+        text: new FormControl(post.text, Validators.required)
+      });
+    });
+    /* Old way. Params attribute might be deprecated in the future
+    https://angular.io/guide/deprecations#activatedroute-params-and-queryparams-properties
+    this.activatedRoute.params.pipe(
       switchMap((params: Params) => {
         return this.postService.getById(params.id);
       })
@@ -35,13 +48,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
         title: new FormControl(post.title, Validators.required),
         text: new FormControl(post.text, Validators.required)
       });
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.updateSub) {
-      this.updateSub.unsubscribe();
-    }
+    }); */
   }
 
   submit() {
@@ -59,6 +66,12 @@ export class PostEditComponent implements OnInit, OnDestroy {
       this.submitted = false;
       console.log('Post was updated.');
     });
+  }
+
+  ngOnDestroy() {
+    if (this.updateSub) {
+      this.updateSub.unsubscribe();
+    }
   }
 
 }

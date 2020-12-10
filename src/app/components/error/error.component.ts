@@ -9,10 +9,10 @@ import { ActivatedRoute, Data } from '@angular/router';
 export class ErrorComponent implements OnInit {
   errorMessage = 'Error.';
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.errorMessage = this.route.snapshot.data.message;
+    this.errorMessage = this.activatedRoute.snapshot.data.message;
     // In case the data is dynamic
     /*this.route.data.subscribe(
       (data: Data) => {
