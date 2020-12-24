@@ -13,29 +13,23 @@
                 </ul>
             </div>
             <div class="col-8">
-                <input
-                type="text"
-                class="form-control"
-                id="inputUsernameId"
-                formControlName="username"
-                [ngClass]="{
-                    'is-valid': form.controls.username.valid && form.controls.username.touched,
-                    'is-invalid': form.controls.username.invalid && form.controls.username.touched
-                }">
-                <div
-                *ngIf="!form.get('username').valid && form.get('username').touched"
-                class="invalid-feedback">Username is required.</div>
-                <div
-                *ngIf="form.get('username').errors?.pattern"
-                class="invalid-feedback">Only letters, numbers, dashes and undersores are allowed.</div>
-                <div
-                *ngIf="form.get('username').errors?.maxlength"
-                class="invalid-feedback">{{ form.get('username').errors?.maxlength.requiredLength }}
-                symbols maximum.
-                {{ form.get('username').errors?.maxlength.actualLength }} symbols entered.</div>
-                <div
-                *ngIf="form.get('username').errors?.forbiddenUsername"
-                class="invalid-feedback">Username cannot be {{ form.get('username').value }}</div>
+                <input type="text"
+                       class="form-control"
+                       id="inputUsernameId"
+                       formControlName="username"
+                       [ngClass]="{
+                            'is-valid': form.controls.username.valid && form.controls.username.touched,
+                            'is-invalid': form.controls.username.invalid && form.controls.username.touched
+                       }">
+                <div *ngIf="!form.get('username').valid && form.get('username').touched"
+                     class="invalid-feedback">Username is required.</div>
+                <div *ngIf="form.get('username').errors?.pattern"
+                     class="invalid-feedback">Only letters, numbers, dashes and undersores are allowed.</div>
+                <div *ngIf="form.get('username').errors?.maxlength"
+                     class="invalid-feedback">{{ form.get('username').errors?.maxlength.requiredLength }} symbols maximum.
+                     {{ form.get('username').errors?.maxlength.actualLength }} symbols entered.</div>
+                <div *ngIf="form.get('username').errors?.forbiddenUsername"
+                     class="invalid-feedback">Username cannot be {{ form.get('username').value }}</div>
 
             </div>
         </div>
@@ -50,24 +44,20 @@
                 </ul>
             </div>
             <div class="col-8">
-                <input
-                type="text"
-                class="form-control"
-                id="inputEmailId"
-                formControlName="email"
-                [ngClass]="{
-                    'is-valid': form.controls.email.valid && form.controls.email.touched,
-                    'is-invalid': form.controls.email.invalid && form.controls.email.touched
-                }">
-                <div
-                *ngIf="!form.get('email').valid && form.get('email').touched"
-                class="invalid-feedback">Email is required.</div>
-                <div
-                *ngIf="form.get('email').errors?.email"
-                class="invalid-feedback">Email is not valid.</div>
-                <div
-                *ngIf="form.get('email').errors?.forbiddenEmail"
-                class="invalid-feedback">Email cannot be {{ form.get('email').value }}.</div>
+                <input type="text"
+                       class="form-control"
+                       id="inputEmailId"
+                       formControlName="email"
+                       [ngClass]="{
+                           'is-valid': form.controls.email.valid && form.controls.email.touched,
+                           'is-invalid': form.controls.email.invalid && form.controls.email.touched
+                       }">
+                <div *ngIf="!form.get('email').valid && form.get('email').touched"
+                     class="invalid-feedback">Email is required.</div>
+                <div *ngIf="form.get('email').errors?.email"
+                     class="invalid-feedback">Email is not valid.</div>
+                <div *ngIf="form.get('email').errors?.forbiddenEmail"
+                     class="invalid-feedback">Email cannot be {{ form.get('email').value }}.</div>
             </div>
         </div>
         <div class="row mb-3">
@@ -75,45 +65,75 @@
                 <label for="inputGenderId" class="form-label">Gender</label>
             </div>
             <div class="col-8">
-                <select
-                class="form-select"
-                id="inputGenderId"
-                formControlName="gender"
-                [ngClass]="{
-                    'is-valid': form.controls.gender.valid && form.controls.gender.touched,
-                    'is-invalid': form.controls.gender.invalid && form.controls.gender.touched
-                }">
+                <select class="form-select"
+                        id="inputGenderId"
+                        formControlName="gender"
+                        [ngClass]="{
+                             'is-valid': form.controls.gender.valid && form.controls.gender.touched,
+                             'is-invalid': form.controls.gender.invalid && form.controls.gender.touched
+                        }">
                     <option></option>
-                    <option
-                    *ngFor="let genderItem of genderList | keyvalue : originalOrder"
-                    [value]="genderItem.key">{{ genderItem.value }}</option>
+                    <option *ngFor="let genderItem of genderList | keyvalue : originalOrder"
+                            [value]="genderItem.key">{{ genderItem.value }}</option>
                 </select>
-                <div
-                *ngIf="!form.get('gender').valid && form.get('gender').touched"
-                class="invalid-feedback">Gender is required.</div>
+                <div *ngIf="!form.get('gender').valid && form.get('gender').touched"
+                     class="invalid-feedback">Gender is required.</div>
             </div>
         </div>
-        <div class="row mb-3">
-          <div class="col-4">
-              <label class="form-label">Tags (dynamic field via FormArray)</label>
-          </div>
-          <div class="col-8" formGroupName="tags">
-              <div *ngFor="let tagControl of getTagControls(); let idx = index" class="input-group mb-3">
-                <input
-                type="text"
-                class="form-control"
-                [placeholder]="idx"
-                [formControlName]="idx"
-                [ngClass]="{
-                  'is-valid': tagControl.valid && tagControl.touched,
-                  'is-invalid': tagControl.invalid && tagControl.touched
-                }">
-                <button type="button" class="btn btn-secondary"
-                (click)="removeTagControl(idx)">Remove</button>
-              </div>
-              <button type="button" class="btn btn-secondary" (click)="addTagControl()">Add Tag</button>
-          </div>
-        </div>
+
+        <section class="row mb-3">
+            <div class="col-4">
+                <label class="form-label">User List (dynamic field via FormArray)</label>
+            </div>
+            <div class="col-8">
+                <div [formArrayName]="'userList'">
+                    <div *ngFor="let userListControl of getUserListControls(); let idx = index">
+                        <div class="row mb-3" [formGroupName]="idx">
+                            <div class="col-5">
+                                <input type="text" class="form-control"
+                                       [formControlName]="'name'"
+                                       placeholder="Name"
+                                       [ngClass]="{
+                                         'is-valid': userListControl.get('name').valid && userListControl.get('name').touched,
+                                         'is-invalid': userListControl.get('name').invalid && userListControl.get('name').touched
+                                       }"/>
+                            </div>
+                            <div class="col-5">
+                                <input type="text" class="form-control"
+                                       [formControlName]="'phone'"
+                                       placeholder="Phone"
+                                       [ngClass]="{
+                                         'is-valid': userListControl.get('phone').valid && userListControl.get('phone').touched,
+                                         'is-invalid': userListControl.get('phone').invalid && userListControl.get('phone').touched
+                                       }"/>
+                            </div>
+                            <div class="col-2">
+                                <button type="button" class="btn btn-outline-secondary"
+                                        (click)="removeUserListControl(idx)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-5">
+                        <input type="text" class="form-control"
+                               [formControlName]="'newUserListName'"
+                               placeholder="Name"/>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" class="form-control"
+                               [formControlName]="'newUserListPhone'"
+                               placeholder="Phone"/>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-outline-secondary"
+                                (click)="addUserListControl()">Add</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="row mb-3">
             <div class="col-4"></div>
             <div class="col-8">
