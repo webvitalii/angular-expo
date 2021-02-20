@@ -1,4 +1,6 @@
 import { NgModule, Provider } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,6 +30,9 @@ import { HighlightPipe } from './pipes/highlight.pipe';
 import { PaginationPipe } from './pipes/pagination.pipe';
 import { AuthInterceptor } from './cms-admin/services/auth.interceptor';
 import { SubjectsComponent } from './components/subjects/subjects.component';
+
+registerLocaleData(localeFr, 'fr');
+
 
 const AUTH_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
