@@ -73,7 +73,7 @@
                              'is-invalid': form.controls.gender.invalid && form.controls.gender.touched
                         }">
                     <option></option>
-                    <option *ngFor="let genderItem of genderList | keyvalue : originalOrder"
+                    <option *ngFor="let genderItem of genderList | keyvalue"
                             [value]="genderItem.key">{{ genderItem.value }}</option>
                 </select>
                 <div *ngIf="!form.get('gender').valid && form.get('gender').touched"

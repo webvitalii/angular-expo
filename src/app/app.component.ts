@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { KeyValue } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -7,21 +6,5 @@ import { KeyValue } from '@angular/common';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-expo';
 
-  userData = {
-    username: '',
-    email: '',
-    gender: ''
-  };
-  hasData = false;
-
-  getUserData($event: any) {
-    this.hasData = true;
-    this.userData = { ...$event }; // copy data inside of the object
-  }
-
-  originalOrder = ( a: KeyValue<number, string>, b: KeyValue<number, string> ): number => {
-    return 0;
-  }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { KeyValue } from '@angular/common';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from './custom.validators';
 
@@ -59,10 +58,6 @@ export class FormReactiveComponent implements OnInit {
     console.log(this.form);
     console.log(this.form.value);
     this.form.reset(this.formDefaults);
-  }
-
-  originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
-    return 0;
   }
 
   getUserListControls() {

@@ -2,24 +2,6 @@
 
   <app-nav></app-nav>
 
-  <div *ngIf="hasData">
-    <div *ngFor="let userDataItem of userData | keyvalue : originalOrder">
-        <div class="row">
-            <div class="col-2">{{ userDataItem.key | titlecase }}</div>
-            <div class="col-10">{{ userDataItem.value }}</div>
-        </div>
-    </div>
-  </div>
-
   <router-outlet></router-outlet>
-<!--
-  <div class="row">
-    <div class="col-6">
-        <app-form-template (userDataEvt)="getUserData($event)"></app-form-template>
-    </div>
-    <div class="col-6">
-        <app-form-reactive (userDataEvt)="getUserData($event)"></app-form-reactive>
-    </div>
-  </div>
-  -->
+
 </section>
