@@ -13,7 +13,6 @@ export class PostsComponent implements OnInit, OnDestroy {
   posts: PostInterface[] = [];
   postSub: Subscription;
   deleteSub: Subscription;
-  searchStr = '';
 
   constructor(private postService: PostService) {
   }

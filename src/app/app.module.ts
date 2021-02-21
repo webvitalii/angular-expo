@@ -4,6 +4,7 @@ import localeFr from '@angular/common/locales/fr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DirectivesComponent } from './components/directives/directives.component';
@@ -30,6 +31,7 @@ import { HighlightPipe } from './pipes/highlight.pipe';
 import { PaginationPipe } from './pipes/pagination.pipe';
 import { AuthInterceptor } from './cms-admin/services/auth.interceptor';
 import { SubjectsComponent } from './components/subjects/subjects.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -72,7 +74,12 @@ const AUTH_INTERCEPTOR_PROVIDER: Provider = {
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
+  ],
+  exports: [
+    MatProgressSpinnerModule
   ],
   providers: [AUTH_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
