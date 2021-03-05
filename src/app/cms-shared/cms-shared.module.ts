@@ -1,15 +1,16 @@
+// TODO: Remove module in favor of SharedModule
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { SharedModule } from '@shared/shared.module';
 import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   imports: [
-    HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SharedModule
   ],
   exports: [
-    HttpClientModule,
     MatProgressSpinnerModule,
     LoadingComponent
   ],

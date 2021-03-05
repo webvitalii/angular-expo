@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+
+import { SharedModule } from '@shared/shared.module';
 import { LayoutAdminComponent } from './components/layout-admin/layout-admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { PostsComponent } from './components/posts/posts.component';
@@ -27,10 +27,8 @@ const routesAdmin: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forChild(routesAdmin),
-    FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
     CMSSharedModule
   ],
   exports: [

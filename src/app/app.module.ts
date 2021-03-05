@@ -1,11 +1,17 @@
 import { NgModule, Provider } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+// TODO: Move to CoreModule
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
+
+// @ts-ignore
+import { CoreModule } from '@core/core.module';
+// @ts-ignore
+import { SharedModule } from '@shared/shared.module';
+
 import { AppComponent } from './app.component';
 import { DirectivesComponent } from './components/directives/directives.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -32,6 +38,9 @@ import { PaginationPipe } from './pipes/pagination.pipe';
 import { AuthInterceptor } from './cms-admin/services/auth.interceptor';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainComponent } from './layout/main/main.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -67,16 +76,19 @@ const AUTH_INTERCEPTOR_PROVIDER: Provider = {
     HighlightPipe,
     HomeComponent,
     TodosComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    MainComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CoreModule,
+    SharedModule
   ],
   exports: [
     MatProgressSpinnerModule
