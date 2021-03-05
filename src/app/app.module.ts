@@ -2,7 +2,7 @@ import { NgModule, Provider } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 // TODO: Move to CoreModule
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,14 +11,12 @@ import { CoreModule } from '@core/core.module';
 // @ts-ignore
 import { SharedModule } from '@shared/shared.module';
 
-import { AppComponent } from './app.component';
 import { DirectivesComponent } from './components/directives/directives.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
 import { FormTemplateComponent } from './components/form-template/form-template.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpComponent } from './components/http/http.component';
-import { NavComponent } from './components/nav/nav.component';
 import { ObservablesComponent } from './components/observables/observables.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { PipesComponent } from './components/pipes/pipes.component';
@@ -38,6 +36,7 @@ import { AuthInterceptor } from './cms-admin/services/auth.interceptor';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './layout/main/main.component';
+import { NavComponent } from './layout/nav/nav.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
@@ -52,10 +51,8 @@ const AUTH_INTERCEPTOR_PROVIDER: Provider = {
 
 @NgModule({
   declarations: [
-    AppComponent,
     FormReactiveComponent,
     FormTemplateComponent,
-    NavComponent,
     ErrorComponent,
     ObservablesComponent,
     PipesComponent,
@@ -77,19 +74,19 @@ const AUTH_INTERCEPTOR_PROVIDER: Provider = {
     TodosComponent,
     SubjectsComponent,
     MainComponent,
+    NavComponent,
     HeaderComponent,
     FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     CoreModule,
     SharedModule
   ],
   exports: [],
   providers: [AUTH_INTERCEPTOR_PROVIDER],
-  bootstrap: [AppComponent]
+  bootstrap: [MainComponent]
 })
 export class AppModule { }
