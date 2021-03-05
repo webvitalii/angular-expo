@@ -4,7 +4,6 @@ import localeFr from '@angular/common/locales/fr';
 // TODO: Move to CoreModule
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
 
 // @ts-ignore
@@ -86,13 +85,10 @@ const AUTH_INTERCEPTOR_PROVIDER: Provider = {
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule,
     CoreModule,
     SharedModule
   ],
-  exports: [
-    MatProgressSpinnerModule
-  ],
+  exports: [],
   providers: [AUTH_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
