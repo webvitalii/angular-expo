@@ -4,18 +4,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material.module';
 
+import { LoadingComponent } from './components/loading/loading.component';
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    LoadingComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    LoadingComponent
 ]
 })
 export class SharedModule { }

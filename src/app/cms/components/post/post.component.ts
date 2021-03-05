@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { PostInterface } from '../../../cms-shared/interfaces/post.interface';
-import { PostService } from '../../../cms-shared/services/post.service';
+import { PostInterface } from '@core/interfaces/post.interface';
+import { PostService } from '@core/services/post.service';
 
 @Component({
   selector: 'app-post',

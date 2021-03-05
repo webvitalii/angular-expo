@@ -3,8 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { PostService } from '../../../cms-shared/services/post.service';
-import { PostInterface } from '../../../cms-shared/interfaces/post.interface';
+import { PostService } from '@core/services/post.service';
+import { PostInterface } from '@core/interfaces/post.interface';
 
 @Component({
   selector: 'app-post-edit',

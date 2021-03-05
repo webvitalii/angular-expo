@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { SharedModule } from '@shared/shared.module';
 import { LayoutComponent } from './components/layout/layout.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
-import { CMSSharedModule } from '../cms-shared/cms-shared.module';
 
 const routesCMS: Routes = [
   {
@@ -20,7 +21,7 @@ const routesCMS: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routesCMS),
-    CMSSharedModule
+    SharedModule
   ],
   exports: [
     RouterModule

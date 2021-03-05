@@ -10,7 +10,6 @@ import { PostCreateComponent } from './components/post-create/post-create.compon
 import { LogoutComponent } from './components/logout/logout.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
-import { CMSSharedModule } from '../cms-shared/cms-shared.module';
 
 const routesAdmin: Routes = [
   {
@@ -28,8 +27,7 @@ const routesAdmin: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(routesAdmin),
-    SharedModule,
-    CMSSharedModule
+    SharedModule
   ],
   exports: [
     RouterModule

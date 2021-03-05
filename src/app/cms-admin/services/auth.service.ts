@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { UserInterface } from '../../cms-shared/interfaces/user.interface';
-import { FirebaseAuthInterface } from '../../cms-shared/interfaces/firebase-auth.interface';
+import { UserInterface } from '@core/interfaces/user.interface';
+import { FirebaseAuthInterface } from '@core/interfaces/firebase-auth.interface';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root'

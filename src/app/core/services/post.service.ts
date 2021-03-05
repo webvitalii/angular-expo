@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PostInterface } from '../interfaces/post.interface';
-import { environment } from '../../../environments/environment';
+import { PostInterface } from '@core/interfaces/post.interface';
+import { environment } from '@env/environment';
 
 export interface FirebaseCreateResponse {
   name: string;
