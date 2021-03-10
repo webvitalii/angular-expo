@@ -1,0 +1,76 @@
+<section class="bg-light p-3 rounded">
+  <h3 class="text-center mb-3">Login</h3>
+
+  <div class="alert alert-danger" *ngIf="authService.errorMessage$ | async as errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="alert alert-warning" *ngIf="message">
+    {{ message }}
+  </div>
+
+  <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="row mb-3">
+      <div class="col-4">
+        <label for="inputEmailId" class="form-label">Email</label>
+      </div>
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          id="inputEmailId"
+          formControlName="email"
+          [ngClass]="{
+                  'is-valid': form.controls.email.valid && form.controls.email.touched,
+                  'is-invalid': form.controls.email.invalid && form.controls.email.touched
+              }">
+        <div
+          *ngIf="!form.get('email').valid && form.get('email').touched"
+          class="invalid-feedback">Email is required.</div>
+        <div
+          *ngIf="form.get('email').errors?.email"
+          class="invalid-feedback">Email is not valid.</div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-4">
+        <label for="inputPasswordId" class="form-label">Password</label>
+      </div>
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          id="inputPasswordId"
+          formControlName="password"
+          [ngClass]="{
+                  'is-valid': form.controls.password.valid && form.controls.password.touched,
+                  'is-invalid': form.controls.password.invalid && form.controls.password.touched
+              }">
+        <div
+          *ngIf="!form.get('password').valid && form.get('password').touched"
+          class="invalid-feedback">Password is required.</div>
+        <div
+          *ngIf="form.get('password').errors?.minlength"
+          class="invalid-feedback">{{ form.get('password').errors?.minlength.requiredLength }}
+          symbols minimum.
+          {{ form.get('password').errors?.minlength.actualLength }} symbols entered.</div>
+
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-4"></div>
+      <div class="col-8">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg"
+          [disabled]="form.invalid || formSubmitting"
+        >Login</button>
+      </div>
+    </div>
+  </form>
+
+  <pre>{{ form.value | json }}</pre>
+</section>

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from '@shared/shared.module';
 import { LayoutAdminComponent } from './components/layout-admin/layout-admin.component';
-import { LoginComponent } from './components/login/login.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { PostCreateComponent } from './components/post-create/post-create.component';
@@ -15,7 +14,6 @@ const routesAdmin: Routes = [
   {
     path: '', component: LayoutAdminComponent, children: [
       { path: '', redirectTo: '/admin/posts', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
       { path: 'logout', component: LogoutComponent },
       { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
       { path: 'post-create', component: PostCreateComponent, canActivate: [AuthGuard] },
@@ -34,7 +32,6 @@ const routesAdmin: Routes = [
   ],
   declarations: [
     LayoutAdminComponent,
-    LoginComponent,
     PostsComponent,
     PostEditComponent,
     PostCreateComponent,

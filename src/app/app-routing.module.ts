@@ -29,6 +29,11 @@ const routes: Routes = [
     loadChildren: () => import('./cms/cms.module').then(m => m.CMSModule)
   },
   {
+    path: 'account',
+    // lazy loading of the module
+    loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
+  },
+  {
     path: 'admin',
     // lazy loading of the module
     loadChildren: () => import('./cms-admin/cms-admin.module').then(m => m.CMSAdminModule)
@@ -49,8 +54,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: PreloadAllModules // lazy loading of the modules
-    ,
+    // lazy loading of the modules
+    preloadingStrategy: PreloadAllModules,
     relativeLinkResolution: 'legacy'
 })],
   exports: [RouterModule]
