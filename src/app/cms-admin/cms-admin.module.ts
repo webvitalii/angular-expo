@@ -6,7 +6,6 @@ import { LayoutAdminComponent } from './components/layout-admin/layout-admin.com
 import { PostsComponent } from './components/posts/posts.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { PostCreateComponent } from './components/post-create/post-create.component';
-import { LogoutComponent } from './components/logout/logout.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
 
@@ -14,7 +13,6 @@ const routesAdmin: Routes = [
   {
     path: '', component: LayoutAdminComponent, children: [
       { path: '', redirectTo: '/admin/posts', pathMatch: 'full' },
-      { path: 'logout', component: LogoutComponent },
       { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
       { path: 'post-create', component: PostCreateComponent, canActivate: [AuthGuard] },
       { path: 'post-edit/:id', component: PostEditComponent, canActivate: [AuthGuard] }
@@ -34,8 +32,7 @@ const routesAdmin: Routes = [
     LayoutAdminComponent,
     PostsComponent,
     PostEditComponent,
-    PostCreateComponent,
-    LogoutComponent
+    PostCreateComponent
   ],
   providers: [
     AuthService,
