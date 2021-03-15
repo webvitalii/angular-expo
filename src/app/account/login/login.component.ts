@@ -10,7 +10,7 @@ import { AuthService } from '@app/cms-admin/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
+  formLogin: FormGroup;
   formSubmitting = false;
   message = '';
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       }
     });
 
-    this.form = new FormGroup({
+    this.formLogin = new FormGroup({
       email: new FormControl(null, [
         Validators.required,
         Validators.email
@@ -39,22 +39,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    if (this.form.invalid) {
+  onLogin() {
+    if (this.formLogin.invalid) {
       return false;
     }
     this.formSubmitting = true;
     const user: UserInterface = {
-      email: this.form.value.email,
-      password: this.form.value.password,
+      email: this.formLogin.value.email,
+      password: this.formLogin.value.password,
       returnSecureToken: true
     };
-    console.log(this.form);
-    console.log(this.form.value);
+    console.log(this.formLogin);
+    console.log(this.formLogin.value);
 
     this.authService.login(user).subscribe((response) => {
       console.log(response);
-      this.form.reset();
+      this.formLogin.reset();
       this.router.navigate(['/admin']);
       this.formSubmitting = false;
     }, () => {
