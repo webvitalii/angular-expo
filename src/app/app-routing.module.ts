@@ -38,6 +38,11 @@ const routes: Routes = [
     // lazy loading of the module
     loadChildren: () => import('./cms-admin/cms-admin.module').then(m => m.CMSAdminModule)
   },
+  {
+    path: 'style-guide',
+    // lazy loading of the module
+    loadChildren: () => import('./style-guide/style-guide.module').then(m => m.StyleGuideModule)
+  },
   { path: 'home', component: HomeComponent },
   { path: 'form-template', component: FormTemplateComponent },
   { path: 'form-reactive', component: FormReactiveComponent },

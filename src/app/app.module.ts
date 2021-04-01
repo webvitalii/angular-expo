@@ -6,9 +6,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
-// @ts-ignore
 import { CoreModule } from '@core/core.module';
-// @ts-ignore
 import { SharedModule } from '@shared/shared.module';
 
 import { DirectivesComponent } from './components/directives/directives.component';
