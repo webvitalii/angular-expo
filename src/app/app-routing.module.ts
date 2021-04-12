@@ -30,22 +30,18 @@ const routes: Routes = [
   }, */
   {
     path: '',
-    // lazy loading of the module
     loadChildren: () => CMSModule
   },
   {
     path: 'account',
-    // lazy loading of the module
     loadChildren: () => AccountModule
   },
   {
     path: 'admin',
-    // lazy loading of the module
     loadChildren: () => CMSAdminModule
   },
   {
     path: 'style-guide',
-    // lazy loading of the module
     loadChildren: () => StyleGuideModule
   },
   { path: 'home', component: HomeComponent },
