@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AccountModule } from '@app/account/account.module';
+import { StyleGuideModule } from '@app/style-guide/style-guide.module';
+import { CMSModule } from '@app/cms/cms.module';
+import { CMSAdminModule } from '@app/cms-admin/cms-admin.module';
 import { HomeComponent } from './components/home/home.component';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
 import { FormTemplateComponent } from './components/form-template/form-template.component';
@@ -12,6 +16,7 @@ import { ViewerComponent } from './components/viewer/viewer.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { HttpComponent } from './components/http/http.component';
 import { ErrorComponent } from './components/error/error.component';
+
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -26,22 +31,22 @@ const routes: Routes = [
   {
     path: '',
     // lazy loading of the module
-    loadChildren: () => import('./cms/cms.module').then(m => m.CMSModule)
+    loadChildren: () => CMSModule
   },
   {
     path: 'account',
     // lazy loading of the module
-    loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
+    loadChildren: () => AccountModule
   },
   {
     path: 'admin',
     // lazy loading of the module
-    loadChildren: () => import('./cms-admin/cms-admin.module').then(m => m.CMSAdminModule)
+    loadChildren: () => CMSAdminModule
   },
   {
     path: 'style-guide',
     // lazy loading of the module
-    loadChildren: () => import('./style-guide/style-guide.module').then(m => m.StyleGuideModule)
+    loadChildren: () => StyleGuideModule
   },
   { path: 'home', component: HomeComponent },
   { path: 'form-template', component: FormTemplateComponent },
