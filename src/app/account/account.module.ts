@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '@shared/shared.module';
-import { ACCOUNT_ROUTES } from '@app/account/account.route';
+import { ACCOUNT_ROUTE } from '@app/account/account.route';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 
@@ -12,7 +12,7 @@ import { LogoutComponent } from './logout/logout.component';
     LogoutComponent
   ],
   imports: [
-    RouterModule.forChild(ACCOUNT_ROUTES),
+    RouterModule.forChild(ACCOUNT_ROUTE),
     SharedModule
   ]
 })
