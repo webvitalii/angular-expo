@@ -7,7 +7,7 @@ export class NotificationUtil {
 
   constructor(private matSnackBar: MatSnackBar) {}
 
-  open(message: string, options = {}) {
+  open(message: string, options = {}): void {
 
     const optionsDefault = {
       duration: 5000
