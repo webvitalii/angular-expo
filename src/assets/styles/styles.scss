@@ -2,3 +2,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+input.ng-dirty.ng-invalid {
+  border-left: 3px solid red;
+}
+
+input.ng-dirty.ng-valid {
+  border-left: 3px solid green;
+}
