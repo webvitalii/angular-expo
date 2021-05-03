@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-style-guide-icon',
   templateUrl: './style-guide-icon.component.html',
