@@ -1,10 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+
+import { NotificationUtil } from '@core/utils/notification.util';
 import { PostService } from '@core/services/post.service';
 import { PostInterface } from '@core/interfaces/post.interface';
+
 
 @Component({
   selector: 'app-post-edit',
@@ -20,7 +23,8 @@ export class PostEditComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+    private notificationUtil: NotificationUtil
   ) {
   }
 
@@ -64,7 +68,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
       title: this.form.value.title
     }).subscribe(() => {
       this.submitted = false;
-      console.log('Post was updated.');
+      this.notificationUtil.open('Updated successfully');
     });
   }
 
