@@ -4,12 +4,16 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material.module';
-
 import { LoadingComponent } from './components/loading/loading.component';
+import { OrderByPipe } from './pipes/order-by.pipe';
+import { ReversePipe } from './pipes/reverse.pipe';
+
 
 @NgModule({
   declarations: [
-    LoadingComponent
+    LoadingComponent,
+    OrderByPipe,
+    ReversePipe
   ],
   imports: [
     CommonModule,
@@ -24,7 +28,9 @@ import { LoadingComponent } from './components/loading/loading.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    LoadingComponent
+    LoadingComponent,
+    OrderByPipe,
+    ReversePipe
 ]
 })
 export class SharedModule { }
