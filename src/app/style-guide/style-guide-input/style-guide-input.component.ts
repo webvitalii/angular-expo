@@ -9,7 +9,9 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class StyleGuideInputComponent implements OnInit {
   emailFormControl: FormControl;
-  value = 'Clear me';
+  textValue = 'Click button to clear';
+  isPasswordHidden = true;
+  passwordValue = 'p@s5w0rd';
 
   constructor() { }
 
