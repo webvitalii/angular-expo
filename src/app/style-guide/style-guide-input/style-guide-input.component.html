@@ -3,24 +3,6 @@
 
   <div class="w-50">
 
-    <h3>Input prefix and suffix</h3>
-
-    <mat-form-field class="w-100">
-      <mat-label>Telephone</mat-label>
-      <span matPrefix>+1-</span>
-      <input type="tel" matInput>
-      <mat-icon matSuffix>phone</mat-icon>
-    </mat-form-field>
-
-    <h3>Input maxlength and remaining counter</h3>
-
-    <mat-form-field class="w-100">
-      <mat-label>Message</mat-label>
-      <input matInput #message maxlength="100">
-      <mat-hint align="start"><strong>Don't disclose personal info</strong></mat-hint>
-      <mat-hint align="end">{{ message.value.length }} / 100</mat-hint>
-    </mat-form-field>
-
     <h3>Input validation</h3>
 
     <mat-form-field class="w-100">
@@ -35,6 +17,24 @@
     </mat-form-field>
 
 
+    <h3>Textarea</h3>
+
+    <mat-form-field class="w-100">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+
+
+    <h3>Input prefix and suffix</h3>
+
+    <mat-form-field class="w-100">
+      <mat-label>Telephone</mat-label>
+      <span matPrefix>+1-</span>
+      <input type="tel" matInput>
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+
+
     <h3>Input hint</h3>
 
     <mat-form-field class="w-100">
@@ -42,6 +42,16 @@
       <input type="email" matInput>
       <mat-hint align="start"><strong>Hint on left side</strong></mat-hint>
       <mat-hint align="end"><strong>Hint on right side</strong></mat-hint>
+    </mat-form-field>
+
+
+    <h3>Input maxlength and remaining counter</h3>
+
+    <mat-form-field class="w-100">
+      <mat-label>Message</mat-label>
+      <input matInput #message maxlength="20">
+      <mat-hint align="start"><strong>Don't disclose personal info</strong></mat-hint>
+      <mat-hint align="end">{{ message.value.length }} / 20</mat-hint>
     </mat-form-field>
 
 
@@ -62,7 +72,7 @@
       <mat-label>Password</mat-label>
       <input matInput [(ngModel)]="passwordValue"
              [type]="isPasswordHidden ? 'password' : 'text'">
-      <button mat-button matSuffix mat-icon-button (click)="isPasswordHidden = !isPasswordHidden">
+      <button matSuffix mat-icon-button (click)="isPasswordHidden = !isPasswordHidden">
         <mat-icon>{{ isPasswordHidden ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
     </mat-form-field>
