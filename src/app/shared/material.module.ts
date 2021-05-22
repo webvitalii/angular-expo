@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 // import { DragDropModule } from '@angular/cdk/drag-drop';
 // import { MatAutocompleteModule } from '@angular/material/autocomplete';
+// import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 // import { MatButtonToggleModule } from '@angular/material/button-toggle';
 // import { MatCheckboxModule } from '@angular/material/checkbox';
