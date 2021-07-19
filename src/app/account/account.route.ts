@@ -7,9 +7,14 @@ import { LOGOUT_ROUTE } from '@app/account/logout/logout.route';
 export const ACCOUNT_ROUTE: Routes = [
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  ...LOGIN_ROUTE,
-  ...LOGOUT_ROUTE
+    children: [
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+      },
+      ...LOGIN_ROUTE,
+      ...LOGOUT_ROUTE
+    ]
+  }
 ];
