@@ -17,6 +17,7 @@ import { TodosComponent } from './components/todos/todos.component';
 import { HttpComponent } from './components/http/http.component';
 import { ErrorComponent } from './components/error/error.component';
 import {AnimationModule} from '@app/animation/animation.module';
+import {PageModule} from '@app/page/page.module';
 
 
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: () => AccountModule
+  },
+  {
+    path: 'page',
+    loadChildren: () => PageModule
   },
   {
     path: 'admin',
