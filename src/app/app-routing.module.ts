@@ -16,6 +16,7 @@ import { ViewerComponent } from './components/viewer/viewer.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { HttpComponent } from './components/http/http.component';
 import { ErrorComponent } from './components/error/error.component';
+import {AnimationModule} from '@app/animation/animation.module';
 
 
 const routes: Routes = [
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'style-guide',
     loadChildren: () => StyleGuideModule
+  },
+  {
+    path: 'animation',
+    loadChildren: () => AnimationModule
   },
   { path: 'home', component: HomeComponent },
   { path: 'form-template', component: FormTemplateComponent },
