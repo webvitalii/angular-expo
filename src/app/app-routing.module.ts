@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AccountModule } from '@app/account/account.module';
+import { FormModule } from '@app/form/form.module';
 import { StyleGuideModule } from '@app/style-guide/style-guide.module';
 import { CMSModule } from '@app/cms/cms.module';
 import { CMSAdminModule } from '@app/cms-admin/cms-admin.module';
 import { HomeComponent } from './components/home/home.component';
-import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
-import { FormTemplateComponent } from './components/form-template/form-template.component';
 import { DirectivesComponent } from './components/directives/directives.component';
 import { ObservablesComponent } from './components/observables/observables.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
@@ -39,6 +38,10 @@ const routes: Routes = [
     loadChildren: () => AccountModule
   },
   {
+    path: 'form',
+    loadChildren: () => FormModule
+  },
+  {
     path: 'page',
     loadChildren: () => PageModule
   },
@@ -55,8 +58,6 @@ const routes: Routes = [
     loadChildren: () => AnimationModule
   },
   { path: 'home', component: HomeComponent },
-  { path: 'form-template', component: FormTemplateComponent },
-  { path: 'form-reactive', component: FormReactiveComponent },
   { path: 'directives', component: DirectivesComponent },
   { path: 'observables', component: ObservablesComponent },
   { path: 'subjects', component: SubjectsComponent },

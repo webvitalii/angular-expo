@@ -11,8 +11,6 @@ import { SharedModule } from '@shared/shared.module';
 
 import { DirectivesComponent } from './components/directives/directives.component';
 import { ErrorComponent } from './components/error/error.component';
-import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
-import { FormTemplateComponent } from './components/form-template/form-template.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpComponent } from './components/http/http.component';
 import { ObservablesComponent } from './components/observables/observables.component';
@@ -49,8 +47,6 @@ const AUTH_INTERCEPTOR_PROVIDER: Provider = {
 
 @NgModule({
   declarations: [
-    FormReactiveComponent,
-    FormTemplateComponent,
     ErrorComponent,
     ObservablesComponent,
     PipesComponent,
