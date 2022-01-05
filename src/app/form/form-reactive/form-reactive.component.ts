@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from './custom.validators';
 
@@ -8,7 +8,6 @@ import { CustomValidators } from './custom.validators';
   styleUrls: ['./form-reactive.component.scss']
 })
 export class FormReactiveComponent implements OnInit {
-  @Output() userDataEvt = new EventEmitter<object>();
 
   form: FormGroup;
 
@@ -42,10 +41,7 @@ export class FormReactiveComponent implements OnInit {
         ],
         [CustomValidators.forbiddenEmailAsync]
       ),
-      gender: new FormControl(null, Validators.required),
-      userList: new FormArray([]),
-      newUserListName: new FormControl(null, []),
-      newUserListPhone: new FormControl(null, [])
+      gender: new FormControl(null, Validators.required)
     });
     this.form.patchValue(this.formDefaults);
   }
@@ -54,34 +50,9 @@ export class FormReactiveComponent implements OnInit {
     if (this.form.invalid) {
       return false;
     }
-    // this.userDataEvt.emit(this.form.value);
     console.log(this.form);
     console.log(this.form.value);
     this.form.reset(this.formDefaults);
-  }
-
-  getUserListControls() {
-    return (this.form.get('userList') as FormArray).controls;
-  }
-
-  removeUserListControl(controlIndex: number) {
-    (this.form.get('userList') as FormArray).removeAt(controlIndex);
-  }
-
-  addUserListControl() {
-    if (this.form.get('newUserListName').value && this.form.get('newUserListPhone').value) {
-      const newUserListRow = new FormGroup({
-        name: new FormControl(this.form.get('newUserListName').value, [Validators.required]),
-        phone: new FormControl(this.form.get('newUserListPhone').value, [
-          Validators.required,
-          Validators.maxLength(10),
-          Validators.pattern('^[0-9]+$')
-        ]),
-      });
-      (this.form.get('userList') as FormArray).push(newUserListRow);
-      this.form.get('newUserListName').setValue('');
-      this.form.get('newUserListPhone').setValue('');
-    }
   }
 
 }
