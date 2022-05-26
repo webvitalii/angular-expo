@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  appVersion: require('../../package.json').version,
   firebaseConfig: {
     apiKey: 'AIzaSyDYBz74b_nfQYQEg0kOQwAyfcHtPKkwhgo',
     authDomain: 'angular-expo.firebaseapp.com',
