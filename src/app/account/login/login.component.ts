@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
     }
     this.formSubmitting = true;
     const user: UserInterface = {
-      email: this.formLogin.value.email,
-      password: this.formLogin.value.password,
+      email: this.formLogin.get('email').value,
+      password: this.formLogin.get('password').value,
       returnSecureToken: true
     };
     console.log(this.formLogin);

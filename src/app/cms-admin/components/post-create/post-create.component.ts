@@ -29,14 +29,13 @@ export class PostCreateComponent implements OnInit {
     }
 
     const post: PostInterface = {
-      title: this.form.value.title,
-      text: this.form.value.text,
+      title: this.form.get('title').value,
+      text: this.form.get('text').value,
       date: new Date()
     };
 
     this.postService.create(post).subscribe(() => {
       this.form.reset();
-      console.log('Post was created.');
     });
   }
 

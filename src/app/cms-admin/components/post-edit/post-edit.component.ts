@@ -17,7 +17,6 @@ import { PostInterface } from '@core/interfaces/post.interface';
 export class PostEditComponent implements OnInit, OnDestroy {
   form: FormGroup;
   post: PostInterface;
-  submitted = false;
 
   updateSub: Subscription;
 
@@ -60,14 +59,11 @@ export class PostEditComponent implements OnInit, OnDestroy {
       return false;
     }
 
-    this.submitted = true;
-
     this.updateSub = this.postService.update({
       ...this.post,
-      text: this.form.value.text,
-      title: this.form.value.title
+      text: this.form.get('text').value,
+      title: this.form.get('title').value
     }).subscribe(() => {
-      this.submitted = false;
       this.notificationUtil.open('Updated successfully');
     });
   }

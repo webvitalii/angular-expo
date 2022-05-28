@@ -18,7 +18,7 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.postSub = this.postService.getAll().subscribe(posts => {
+    this.postSub = this.postService.getAll().subscribe((posts) => {
       this.posts = posts;
     });
   }
@@ -26,7 +26,6 @@ export class PostsComponent implements OnInit, OnDestroy {
   remove(id: string) {
     this.deleteSub = this.postService.remove(id).subscribe(() => {
       this.posts = this.posts.filter(post => post.id !== id);
-      console.log('Post was deleted.');
     });
   }
 
