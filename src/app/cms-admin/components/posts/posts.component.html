@@ -1,5 +1,6 @@
-<div *ngIf="posts.length; else loading">
-  <table class="table">
+<section>
+
+  <table class="table" *ngIf="posts?.length > 0">
     <thead>
     <tr>
       <th>#</th>
@@ -23,8 +24,5 @@
     </tr>
     </tbody>
   </table>
-</div>
 
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>
+</section>

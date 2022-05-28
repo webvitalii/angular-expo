@@ -1,5 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { LoadingService } from '@core/services/loading.service';
+
 
 @Component({
   selector: 'app-main',
@@ -9,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class MainComponent implements OnInit {
   @HostBinding('attr.app-version') appVersionAttr = environment.appVersion;
 
-  constructor() { }
+  constructor(public loadingService: LoadingService) { }
 
   ngOnInit(): void {
   }

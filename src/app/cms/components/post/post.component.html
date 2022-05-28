@@ -1,4 +1,4 @@
-<div *ngIf="post$ | async as post; else loading">
+<section *ngIf="post$ | async as post">
   <div class="post">
     <h1>{{ post.title }}</h1>
 
@@ -10,8 +10,4 @@
       {{ post.text }}
     </div>
   </div>
-</div>
-
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>
+</section>

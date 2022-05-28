@@ -1,9 +1,10 @@
-import { NgModule, Provider } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
-// TODO: Move to CoreModule
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import localeFr from '@angular/common/locales/fr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { CoreModule } from '@core/core.module';
@@ -29,8 +30,9 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { HighlightPipe } from './pipes/highlight.pipe';
 import { PaginationPipe } from './pipes/pagination.pipe';
 import { AuthInterceptor } from './cms-admin/services/auth.interceptor';
+import { NetworkInterceptor } from '@core/interceptors/network.interceptor';
 import { SubjectsComponent } from './components/subjects/subjects.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { MainComponent } from './layout/main/main.component';
 import { NavComponent } from './layout/nav/nav.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -39,11 +41,6 @@ import { FooterComponent } from './layout/footer/footer.component';
 registerLocaleData(localeFr, 'fr');
 
 
-const AUTH_INTERCEPTOR_PROVIDER: Provider = {
-  provide: HTTP_INTERCEPTORS,
-  multi: true,
-  useClass: AuthInterceptor
-};
 
 @NgModule({
   declarations: [
@@ -80,7 +77,18 @@ const AUTH_INTERCEPTOR_PROVIDER: Provider = {
     SharedModule
   ],
   exports: [],
-  providers: [AUTH_INTERCEPTOR_PROVIDER],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NetworkInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [MainComponent]
 })
 export class AppModule { }
