@@ -9,11 +9,15 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 import { ReversePipe } from './pipes/reverse.pipe';
 
 
+const sharedComponents = [
+  LoadingComponent,
+  OrderByPipe,
+  ReversePipe
+];
+
 @NgModule({
   declarations: [
-    LoadingComponent,
-    OrderByPipe,
-    ReversePipe
+    ...sharedComponents
   ],
   imports: [
     CommonModule,
@@ -23,14 +27,12 @@ import { ReversePipe } from './pipes/reverse.pipe';
     MaterialModule
   ],
   exports: [
+    ...sharedComponents,
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
-    LoadingComponent,
-    OrderByPipe,
-    ReversePipe
+    MaterialModule
 ]
 })
 export class SharedModule { }
