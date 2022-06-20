@@ -1,30 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import {transition, trigger} from '@angular/animations';
 
-import {animationEnter, animationLeave, animationNext, animationPrev} from '@core/animations/animations';
+import {animationList} from '@core/animations/animations';
 
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
-  animations: [
-    trigger('animationDefault', [
-      transition(':enter', animationEnter),
-      transition(':leave', animationLeave)
-    ]),
-    trigger('animationSlider', [
-      transition(':increment', animationNext),
-      transition(':decrement', animationPrev)
-    ])
-  ]
+  animations: [...animationList]
 })
 export class SliderComponent implements OnInit {
   sliderList = [
-    'First one',
-    'Second item',
-    'Third and last one',
-    'Fourth item'
+    'First one 1',
+    'Second item 2',
+    'Third one 3',
+    'Fourth item 4'
   ];
   sliderIndex = 1;
   isVisible = true;

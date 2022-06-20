@@ -1,4 +1,4 @@
-import {animate, group, query, style} from '@angular/animations';
+import {animate, group, query, style, transition, trigger} from '@angular/animations';
 
 const animationTiming = '500ms ease-in';
 
@@ -89,4 +89,19 @@ export const animationPrev = [
       {optional: true}
     )
   ])
+];
+
+export const animationEnterLeave = trigger('animationEnterLeave', [
+  transition(':enter', animationEnter),
+  transition(':leave', animationLeave)
+]);
+
+export const animationPrevNext = trigger('animationPrevNext', [
+  transition(':increment', animationNext),
+  transition(':decrement', animationPrev)
+]);
+
+export const animationList = [
+  animationEnterLeave,
+  animationPrevNext
 ];

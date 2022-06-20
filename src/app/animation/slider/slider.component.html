@@ -1,21 +1,24 @@
-<section class="animation-slider">
-  <div *ngFor="let sliderItem of sliderList; let itemIndex = index" >
-    <div [@animationDefault]
-         [@animationSlider]="sliderIndex"
-         *ngIf="sliderIndex === itemIndex + 1">
-      <h3>{{ sliderItem }}</h3>
+<section class="animation__prev-next">
+  <div class="animation__wrap">
+    <div *ngFor="let sliderItem of sliderList; let itemIndex = index" 
+        [@animationEnterLeave]
+        [@animationPrevNext]="sliderIndex">
+      <div *ngIf="sliderIndex === itemIndex + 1">
+        <h3>{{ sliderItem }}</h3>
+      </div>
     </div>
   </div>
 
-
-  <button (click)="prevItem()">Prev</button>
-  <button (click)="nextItem()">Next</button>
+  <button (click)="prevItem()" mat-raised-button color="primary">Prev</button>
+  <button (click)="nextItem()" mat-raised-button color="primary">Next</button>
 </section>
 
 
-<section class="animation-default">
-  <h3 [@animationDefault]
-      *ngIf="isVisible">Title is visible or not</h3>
-
-  <button (click)="isVisible = !isVisible">Hide/Show</button>
+<section class="animation__enter-leave">
+  <div class="animation__wrap">
+    <h3 [@animationEnterLeave]
+        *ngIf="isVisible">Title is visible or not</h3>
+  </div>
+  
+  <button (click)="isVisible = !isVisible" mat-raised-button color="primary">Hide/Show</button>
 </section>
