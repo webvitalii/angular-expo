@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-form-reactive-add-remove',
@@ -8,13 +8,13 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 })
 export class FormReactiveAddRemoveComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      userList: new FormArray([])
+    this.form = new UntypedFormGroup({
+      userList: new UntypedFormArray([])
     });
     this.addUserListControl('Jack', 555777);
     this.addUserListControl('Jane', 444888);
@@ -30,23 +30,23 @@ export class FormReactiveAddRemoveComponent implements OnInit {
   }
 
   getUserListControls() {
-    return (this.form.get('userList') as FormArray).controls;
+    return (this.form.get('userList') as UntypedFormArray).controls;
   }
 
   removeUserListControl(controlIndex: number) {
-    (this.form.get('userList') as FormArray).removeAt(controlIndex);
+    (this.form.get('userList') as UntypedFormArray).removeAt(controlIndex);
   }
 
   addUserListControl(nameValue, phoneValue) {
-    const newUserListRow = new FormGroup({
-      name: new FormControl(nameValue, [Validators.required]),
-      phone: new FormControl(phoneValue, [
+    const newUserListRow = new UntypedFormGroup({
+      name: new UntypedFormControl(nameValue, [Validators.required]),
+      phone: new UntypedFormControl(phoneValue, [
         Validators.required,
         Validators.maxLength(10),
         Validators.pattern('^[0-9]+$')
       ]),
     });
-    (this.form.get('userList') as FormArray).push(newUserListRow);
+    (this.form.get('userList') as UntypedFormArray).push(newUserListRow);
   }
 
 }

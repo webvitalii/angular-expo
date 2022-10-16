@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -15,7 +15,7 @@ import { PostInterface } from '@core/interfaces/post.interface';
   styleUrls: ['./post-edit.component.scss']
 })
 export class PostEditComponent implements OnInit, OnDestroy {
-  form: FormGroup;
+  form: UntypedFormGroup;
   post: PostInterface;
 
   updateSub: Subscription;
@@ -34,9 +34,9 @@ export class PostEditComponent implements OnInit, OnDestroy {
       })
     ).subscribe((post: PostInterface) => {
       this.post = post;
-      this.form = new FormGroup({
-        title: new FormControl(post.title, Validators.required),
-        text: new FormControl(post.text, Validators.required)
+      this.form = new UntypedFormGroup({
+        title: new UntypedFormControl(post.title, Validators.required),
+        text: new UntypedFormControl(post.text, Validators.required)
       });
     });
     /* Old way. Params attribute might be deprecated in the future

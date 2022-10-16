@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./style-guide-input.component.scss']
 })
 export class StyleGuideInputComponent implements OnInit {
-  emailFormControl: FormControl;
+  emailFormControl: UntypedFormControl;
   textValue = 'Click button to clear';
   isPasswordHidden = true;
   passwordValue = 'p@s5w0rd';
@@ -16,7 +16,7 @@ export class StyleGuideInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.emailFormControl = new FormControl('', [
+    this.emailFormControl = new UntypedFormControl('', [
       Validators.required,
       Validators.email,
     ]);
