@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-style-guide-input',
   templateUrl: './style-guide-input.component.html',
@@ -13,13 +12,9 @@ export class StyleGuideInputComponent implements OnInit {
   isPasswordHidden = true;
   passwordValue = 'p@s5w0rd';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.emailFormControl = new UntypedFormControl('', [
-      Validators.required,
-      Validators.email,
-    ]);
+    this.emailFormControl = new UntypedFormControl('', [Validators.required, Validators.email]);
   }
-
 }

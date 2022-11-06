@@ -1,25 +1,34 @@
 <section class="bg-light p-3 rounded">
   <h3 class="text-center mb-3">Login</h3>
 
-  <div class="alert alert-danger" *ngIf="authService.errorMessage$ | async as errorMessage">
+  <div
+    class="alert alert-danger"
+    *ngIf="authService.errorMessage$ | async as errorMessage">
     {{ errorMessage }}
   </div>
 
-  <div class="alert alert-warning" *ngIf="message">
+  <div
+    class="alert alert-warning"
+    *ngIf="message">
     {{ message }}
   </div>
 
-
-  <form name="loginForm" [formGroup]="formLogin" novalidate>
-
+  <form
+    name="loginForm"
+    [formGroup]="formLogin"
+    novalidate>
     <div class="mb-3">
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email">
-        <mat-icon matSuffix class="secondary-text">mail</mat-icon>
-        <mat-error *ngIf="formLogin.get('email').hasError('required')">
-          Email is required
-        </mat-error>
+        <input
+          matInput
+          formControlName="email" />
+        <mat-icon
+          matSuffix
+          class="secondary-text"
+          >mail</mat-icon
+        >
+        <mat-error *ngIf="formLogin.get('email').hasError('required')"> Email is required </mat-error>
         <mat-error *ngIf="!formLogin.get('email').hasError('required') && formLogin.get('email').hasError('email')">
           Please enter a valid email address
         </mat-error>
@@ -29,11 +38,16 @@
     <div class="mb-3">
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password">
-        <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
-        <mat-error *ngIf="formLogin.get('password').hasError('required')">
-          Password is required
-        </mat-error>
+        <input
+          matInput
+          type="password"
+          formControlName="password" />
+        <mat-icon
+          matSuffix
+          class="secondary-text"
+          >vpn_key</mat-icon
+        >
+        <mat-error *ngIf="formLogin.get('password').hasError('required')"> Password is required </mat-error>
         <mat-error *ngIf="!formLogin.get('password').hasError('required') && formLogin.get('password').hasError('minlength')">
           {{ formLogin.get('password').getError('minlength').requiredLength }} symbols minimum.
           {{ formLogin.get('password').getError('minlength').actualLength }} symbols entered.
@@ -42,16 +56,18 @@
     </div>
 
     <div class="mb-3">
-      <button mat-raised-button color="primary" class="submit-button"
-              (click)="onLogin()"
-              [disabled]="formLogin.invalid">
+      <button
+        mat-raised-button
+        color="primary"
+        class="submit-button"
+        (click)="onLogin()"
+        [disabled]="formLogin.invalid">
         LOGIN
       </button>
     </div>
-
   </form>
 
-<!--
+  <!--
   <form novalidate [formGroup]="formLogin" (ngSubmit)="onLogin()">
 
     <div class="row mb-3">

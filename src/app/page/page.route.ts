@@ -1,7 +1,6 @@
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 
-import {PAGE_LONG_POLLING_ROUTE} from './long-polling/long-polling.route';
-
+import { PAGE_LONG_POLLING_ROUTE } from './long-polling/long-polling.route';
 
 export const PAGE_ROUTE: Routes = [
   {

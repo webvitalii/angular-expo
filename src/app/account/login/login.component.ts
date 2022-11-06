@@ -14,11 +14,7 @@ export class LoginComponent implements OnInit {
   formSubmitting = false;
   message = '';
 
-  constructor(
-    public authService: AuthService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) { }
+  constructor(public authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
@@ -28,14 +24,8 @@ export class LoginComponent implements OnInit {
     });
 
     this.formLogin = new UntypedFormGroup({
-      email: new UntypedFormControl(null, [
-        Validators.required,
-        Validators.email
-      ]),
-      password: new UntypedFormControl(null, [
-        Validators.required,
-        Validators.minLength(5)
-      ])
+      email: new UntypedFormControl(null, [Validators.required, Validators.email]),
+      password: new UntypedFormControl(null, [Validators.required, Validators.minLength(5)])
     });
   }
 
@@ -52,15 +42,16 @@ export class LoginComponent implements OnInit {
     console.log(this.formLogin);
     console.log(this.formLogin.value);
 
-    this.authService.login(user).subscribe((response) => {
-      console.log(response);
-      this.formLogin.reset();
-      this.router.navigate(['/admin']);
-      this.formSubmitting = false;
-    }, () => {
-      this.formSubmitting = false;
-    });
-
+    this.authService.login(user).subscribe(
+      (response) => {
+        console.log(response);
+        this.formLogin.reset();
+        this.router.navigate(['/admin']);
+        this.formSubmitting = false;
+      },
+      () => {
+        this.formSubmitting = false;
+      }
+    );
   }
-
 }

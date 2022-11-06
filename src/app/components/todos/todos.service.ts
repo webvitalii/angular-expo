@@ -15,7 +15,7 @@ export interface TodoInterface {
 export class TodosService {
   todosApiUrl = 'https://jsonplaceholder.typicode.com/todos/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   fetchTodos(): Observable<TodoInterface[]> {
     const customOptions = {
@@ -24,8 +24,7 @@ export class TodosService {
       }),
       params: new HttpParams().set('_limit', '3') // same as https://jsonplaceholder.typicode.com/todos/?_limit=3
     };
-    return this.http.get<TodoInterface[]>(this.todosApiUrl, customOptions)
-      .pipe(delay(2000)); // added delay to show loading block
+    return this.http.get<TodoInterface[]>(this.todosApiUrl, customOptions).pipe(delay(2000)); // added delay to show loading block
   }
 
   addTodo(todoObj: TodoInterface): Observable<TodoInterface> {
@@ -40,12 +39,11 @@ export class TodosService {
     const todoUpdate = {
       completed: true
     };
-    return this.http.put<TodoInterface>(`${this.todosApiUrl}${todoId}`, todoUpdate)
-      .pipe(
-        catchError(error => {
-          console.log('Error from TodosService: ', error.message);
-          return throwError(error);
-        })
-      );
+    return this.http.put<TodoInterface>(`${this.todosApiUrl}${todoId}`, todoUpdate).pipe(
+      catchError((error) => {
+        console.log('Error from TodosService: ', error.message);
+        return throwError(error);
+      })
+    );
   }
 }

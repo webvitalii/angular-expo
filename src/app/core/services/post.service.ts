@@ -84,7 +84,7 @@ export class PostService {
       author: 'admin',
       date: '2019-11-06T17:15:30.000+0000'
     },
-// 10
+    // 10
     {
       id: 11,
       title: 'Jack',
@@ -155,7 +155,7 @@ export class PostService {
       author: 'admin',
       date: '2019-11-06T17:15:30.000+0000'
     },
-// 20
+    // 20
     {
       id: 21,
       title: 'Large fawn',
@@ -226,14 +226,13 @@ export class PostService {
       author: 'admin',
       date: '2019-11-06T17:15:30.000+0000'
     }
-// 30
+    // 30
   ];
 
   constructor(private http: HttpClient) {}
 
   create(post: PostInterface): Observable<PostInterface> {
-    return this.http.post(`${environment.firebaseConfig.databaseURL}/posts.json`, post)
-    .pipe(
+    return this.http.post(`${environment.firebaseConfig.databaseURL}/posts.json`, post).pipe(
       map((response: FirebaseCreateResponse) => {
         return {
           ...post,
@@ -245,30 +244,27 @@ export class PostService {
   }
 
   getAll(): Observable<PostInterface[]> {
-    return this.http.get(`${environment.firebaseConfig.databaseURL}/posts.json`)
-      .pipe(
-        map((response: {[key: string]: any}) => {
-          return Object
-            .keys(response)
-            .map(key => ({
-              ...response[key],
-              id: key,
-              date: new Date(response[key].date)
-            }));
-        })
-      );
+    return this.http.get(`${environment.firebaseConfig.databaseURL}/posts.json`).pipe(
+      map((response: { [key: string]: any }) => {
+        return Object.keys(response).map((key) => ({
+          ...response[key],
+          id: key,
+          date: new Date(response[key].date)
+        }));
+      })
+    );
   }
 
   getById(id: string): Observable<PostInterface> {
-    return this.http.get<PostInterface>(`${environment.firebaseConfig.databaseURL}/posts/${id}.json`)
-      .pipe(
-        map((post: PostInterface) => {
-          return {
-            ...post, id,
-            date: new Date(post.date)
-          };
-        })
-      );
+    return this.http.get<PostInterface>(`${environment.firebaseConfig.databaseURL}/posts/${id}.json`).pipe(
+      map((post: PostInterface) => {
+        return {
+          ...post,
+          id,
+          date: new Date(post.date)
+        };
+      })
+    );
   }
 
   remove(id: string): Observable<void> {
@@ -279,7 +275,7 @@ export class PostService {
     return this.http.patch<PostInterface>(`${environment.firebaseConfig.databaseURL}/posts/${post.id}.json`, post);
   }
 
-/*
+  /*
   getAllMock(): Observable<PostInterface[]> {
     const posts$: Observable<PostInterface[]> = new Observable((observer) => {
       observer.next(this.posts);

@@ -6,7 +6,7 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/
 export class HiliteDirective {
   @Input('appHilite') color = 'green';
 
-  constructor(private elemRef: ElementRef, private renderer: Renderer2) { }
+  constructor(private elemRef: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('click', ['$event']) onClick(event: Event) {
     console.log(event);
@@ -23,5 +23,4 @@ export class HiliteDirective {
     // this.renderer.setStyle(this.elemRef.nativeElement, 'color', null);
     this.elemRef.nativeElement.style.color = null;
   }
-
 }

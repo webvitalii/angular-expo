@@ -1,98 +1,143 @@
 <section class="bg-light p-3 rounded">
-    <h3 class="text-center mb-3">Reactive Form with Validation</h3>
-    <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="row mb-3">
-            <div class="col-4">
-                <label for="inputUsernameId" class="form-label">Username</label>
-                <div>Validators:</div>
-                <ul>
-                    <li>Required</li>
-                    <li>Max length is 15</li>
-                    <li>Pattern: a-z,A-Z,0-9,-_</li>
-                    <li>Custom validator: cannot be {{ forbiddenUsernamesL }}</li>
-                </ul>
-            </div>
-            <div class="col-8">
-                <input type="text"
-                       class="form-control"
-                       id="inputUsernameId"
-                       formControlName="username"
-                       [ngClass]="{
-                            'is-valid': form.controls.username.valid && form.controls.username.touched,
-                            'is-invalid': form.controls.username.invalid && form.controls.username.touched
-                       }">
-                <div *ngIf="!form.get('username').valid && form.get('username').touched"
-                     class="invalid-feedback">Username is required.</div>
-                <div *ngIf="form.get('username').errors?.pattern"
-                     class="invalid-feedback">Only letters, numbers, dashes and undersores are allowed.</div>
-                <div *ngIf="form.get('username').errors?.maxlength"
-                     class="invalid-feedback">{{ form.get('username').errors?.maxlength.requiredLength }} symbols maximum.
-                     {{ form.get('username').errors?.maxlength.actualLength }} symbols entered.</div>
-                <div *ngIf="form.get('username').errors?.forbiddenUsername"
-                     class="invalid-feedback">Username cannot be {{ form.get('username').value }}</div>
+  <h3 class="text-center mb-3">Reactive Form with Validation</h3>
+  <form
+    novalidate
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()">
+    <div class="row mb-3">
+      <div class="col-4">
+        <label
+          for="inputUsernameId"
+          class="form-label"
+          >Username</label
+        >
+        <div>Validators:</div>
+        <ul>
+          <li>Required</li>
+          <li>Max length is 15</li>
+          <li>Pattern: a-z,A-Z,0-9,-_</li>
+          <li>Custom validator: cannot be {{ forbiddenUsernamesL }}</li>
+        </ul>
+      </div>
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          id="inputUsernameId"
+          formControlName="username"
+          [ngClass]="{
+            'is-valid': form.controls.username.valid && form.controls.username.touched,
+            'is-invalid': form.controls.username.invalid && form.controls.username.touched
+          }" />
+        <div
+          *ngIf="!form.get('username').valid && form.get('username').touched"
+          class="invalid-feedback">
+          Username is required.
+        </div>
+        <div
+          *ngIf="form.get('username').errors?.pattern"
+          class="invalid-feedback">
+          Only letters, numbers, dashes and undersores are allowed.
+        </div>
+        <div
+          *ngIf="form.get('username').errors?.maxlength"
+          class="invalid-feedback">
+          {{ form.get('username').errors?.maxlength.requiredLength }} symbols maximum.
+          {{ form.get('username').errors?.maxlength.actualLength }} symbols entered.
+        </div>
+        <div
+          *ngIf="form.get('username').errors?.forbiddenUsername"
+          class="invalid-feedback">
+          Username cannot be {{ form.get('username').value }}
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <label
+          for="inputEmailId"
+          class="form-label"
+          >Email</label
+        >
+        <div>Validators:</div>
+        <ul>
+          <li>Required</li>
+          <li>Email</li>
+          <li>Custom async validator (3sec delay): cannot be test@test.com</li>
+        </ul>
+      </div>
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          id="inputEmailId"
+          formControlName="email"
+          [ngClass]="{
+            'is-valid': form.controls.email.valid && form.controls.email.touched,
+            'is-invalid': form.controls.email.invalid && form.controls.email.touched
+          }" />
+        <div
+          *ngIf="!form.get('email').valid && form.get('email').touched"
+          class="invalid-feedback">
+          Email is required.
+        </div>
+        <div
+          *ngIf="form.get('email').errors?.email"
+          class="invalid-feedback">
+          Email is not valid.
+        </div>
+        <div
+          *ngIf="form.get('email').errors?.forbiddenEmail"
+          class="invalid-feedback">
+          Email cannot be {{ form.get('email').value }}.
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <label
+          for="inputGenderId"
+          class="form-label"
+          >Gender</label
+        >
+      </div>
+      <div class="col-8">
+        <select
+          class="form-select"
+          id="inputGenderId"
+          formControlName="gender"
+          [ngClass]="{
+            'is-valid': form.controls.gender.valid && form.controls.gender.touched,
+            'is-invalid': form.controls.gender.invalid && form.controls.gender.touched
+          }">
+          <option></option>
+          <option
+            *ngFor="let genderItem of genderList | keyvalue"
+            [value]="genderItem.key">
+            {{ genderItem.value }}
+          </option>
+        </select>
+        <div
+          *ngIf="!form.get('gender').valid && form.get('gender').touched"
+          class="invalid-feedback">
+          Gender is required.
+        </div>
+      </div>
+    </div>
 
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-4">
-                <label for="inputEmailId" class="form-label">Email</label>
-                <div>Validators:</div>
-                <ul>
-                    <li>Required</li>
-                    <li>Email</li>
-                    <li>Custom async validator (3sec delay): cannot be test@test.com</li>
-                </ul>
-            </div>
-            <div class="col-8">
-                <input type="text"
-                       class="form-control"
-                       id="inputEmailId"
-                       formControlName="email"
-                       [ngClass]="{
-                           'is-valid': form.controls.email.valid && form.controls.email.touched,
-                           'is-invalid': form.controls.email.invalid && form.controls.email.touched
-                       }">
-                <div *ngIf="!form.get('email').valid && form.get('email').touched"
-                     class="invalid-feedback">Email is required.</div>
-                <div *ngIf="form.get('email').errors?.email"
-                     class="invalid-feedback">Email is not valid.</div>
-                <div *ngIf="form.get('email').errors?.forbiddenEmail"
-                     class="invalid-feedback">Email cannot be {{ form.get('email').value }}.</div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-4">
-                <label for="inputGenderId" class="form-label">Gender</label>
-            </div>
-            <div class="col-8">
-                <select class="form-select"
-                        id="inputGenderId"
-                        formControlName="gender"
-                        [ngClass]="{
-                             'is-valid': form.controls.gender.valid && form.controls.gender.touched,
-                             'is-invalid': form.controls.gender.invalid && form.controls.gender.touched
-                        }">
-                    <option></option>
-                    <option *ngFor="let genderItem of genderList | keyvalue"
-                            [value]="genderItem.key">{{ genderItem.value }}</option>
-                </select>
-                <div *ngIf="!form.get('gender').valid && form.get('gender').touched"
-                     class="invalid-feedback">Gender is required.</div>
-            </div>
-        </div>
+    <div class="row mb-3">
+      <div class="col-4"></div>
+      <div class="col-8">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg"
+          [disabled]="form.invalid">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
 
-        <div class="row mb-3">
-            <div class="col-4"></div>
-            <div class="col-8">
-                <button
-                type="submit"
-                class="btn btn-primary btn-lg"
-                [disabled]="form.invalid"
-                >Submit</button>
-            </div>
-        </div>
-    </form>
-
-    <h3>Form value:</h3>
-    <pre>{{ form.value | json }}</pre>
+  <h3>Form value:</h3>
+  <pre>{{ form.value | json }}</pre>
 </section>

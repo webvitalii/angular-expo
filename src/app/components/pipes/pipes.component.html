@@ -1,76 +1,179 @@
-<h3><a href="https://angular.io/api/common#pipes" target="_blank">All Pipes</a></h3>
-
+<h3>
+  <a
+    href="https://angular.io/api/common#pipes"
+    target="_blank"
+    >All Pipes</a
+  >
+</h3>
 
 <h3>Text transform</h3>
 
 <ul>
-    <li>demoString original <strong>{{ demoString }}</strong></li>
-    <li>demoString | lowercase <strong>{{ demoString | lowercase }}</strong></li>
-    <li>demoString | uppercase <strong>{{ demoString | uppercase }}</strong></li>
-    <li>demoString | titlecase <strong>{{ demoString | titlecase }}</strong></li>
-    <li>demoString | slice:2 <strong>{{ demoString | slice:2 }}</strong></li>
-    <li>demoString | slice:2:10 <strong>{{ demoString | slice:2:10 }}</strong></li>
-    <li>demoString | slice:-8 <strong>{{ demoString | slice:-8 }}</strong></li>
-    <li>demoString | slice:-8:-2 <strong>{{ demoString | slice:-8:-2 }}</strong></li>
-    <li>demoString | slice:-8:-2 | titlecase <strong>{{ demoString | slice:-8:-2 | titlecase }}</strong></li>
+  <li>
+    demoString original <strong>{{ demoString }}</strong>
+  </li>
+  <li>
+    demoString | lowercase <strong>{{ demoString | lowercase }}</strong>
+  </li>
+  <li>
+    demoString | uppercase <strong>{{ demoString | uppercase }}</strong>
+  </li>
+  <li>
+    demoString | titlecase <strong>{{ demoString | titlecase }}</strong>
+  </li>
+  <li>
+    demoString | slice:2 <strong>{{ demoString | slice: 2 }}</strong>
+  </li>
+  <li>
+    demoString | slice:2:10 <strong>{{ demoString | slice: 2:10 }}</strong>
+  </li>
+  <li>
+    demoString | slice:-8 <strong>{{ demoString | slice: -8 }}</strong>
+  </li>
+  <li>
+    demoString | slice:-8:-2 <strong>{{ demoString | slice: -8:-2 }}</strong>
+  </li>
+  <li>
+    demoString | slice:-8:-2 | titlecase <strong>{{ demoString | slice: -8:-2 | titlecase }}</strong>
+  </li>
 </ul>
 
-<h3><a href="https://angular.io/api/common/DecimalPipe" target="_blank">Number transform</a></h3>
+<h3>
+  <a
+    href="https://angular.io/api/common/DecimalPipe"
+    target="_blank"
+    >Number transform</a
+  >
+</h3>
 
 <ul>
-    <li>demoNumber original <strong>{{ demoNumber }}</strong></li>
-    <li>demoNumber | number <strong>{{ demoNumber | number }}</strong></li>
-    <li>demoNumber | number:'3.1-5' <strong>{{ demoNumber | number:'3.1-5' }}</strong></li>
+  <li>
+    demoNumber original <strong>{{ demoNumber }}</strong>
+  </li>
+  <li>
+    demoNumber | number <strong>{{ demoNumber | number }}</strong>
+  </li>
+  <li>
+    demoNumber | number:'3.1-5' <strong>{{ demoNumber | number: '3.1-5' }}</strong>
+  </li>
 </ul>
 
-<h3><a href="https://angular.io/api/common/DatePipe" target="_blank">Date transform</a></h3>
+<h3>
+  <a
+    href="https://angular.io/api/common/DatePipe"
+    target="_blank"
+    >Date transform</a
+  >
+</h3>
 
 <ul>
-    <li>demoDate original <strong>{{ demoDate }}</strong></li>
-    <li>demoDate | date <strong>{{ demoDate | date }}</strong></li>
-    <li>demoDate | date:'short' <strong>{{ demoDate | date:'short' }}</strong></li>
-    <li>demoDate | date:'medium' <strong>{{ demoDate | date:'medium' }}</strong></li>
-    <li>demoDate | date:'long' <strong>{{ demoDate | date:'long' }}</strong></li>
-    <li>demoDate | date:'full' <strong>{{ demoDate | date:'full' }}</strong></li>
-    <li>demoDate | date:'EEEE, MMMM d, y, h:mm:ss a zzzz' <strong>{{ demoDate | date:'EEEE, MMMM d, y, h:mm:ss a zzzz' }}</strong></li>
-    <li>---</li>
-    <li>demoDate | date:'shortDate' <strong>{{ demoDate | date:'shortDate' }}</strong></li>
-    <li>demoDate | date:'mediumDate' <strong>{{ demoDate | date:'mediumDate' }}</strong></li>
-    <li>demoDate | date:'longDate' <strong>{{ demoDate | date:'longDate' }}</strong></li>
-    <li>demoDate | date:'fullDate' <strong>{{ demoDate | date:'fullDate' }}</strong></li>
-    <li>demoDate | date:'EEEE, MMMM d, y' <strong>{{ demoDate | date:'EEEE, MMMM d, y' }}</strong></li>
-    <li>---</li>
-    <li>demoDate | date:'shortTime' <strong>{{ demoDate | date:'shortTime' }}</strong></li>
-    <li>demoDate | date:'mediumTime' <strong>{{ demoDate | date:'mediumTime' }}</strong></li>
-    <li>demoDate | date:'longTime' <strong>{{ demoDate | date:'longTime' }}</strong></li>
-    <li>demoDate | date:'fullTime' <strong>{{ demoDate | date:'fullTime' }}</strong></li>
-    <li>demoDate | date:'h:mm:ss a zzzz' <strong>{{ demoDate | date:'h:mm:ss a zzzz' }}</strong></li>
-    <li>---</li>
-    <li>demoDate | date:'full':'+0200':'fr' <strong>{{ demoDate | date:'full':'+0200':'fr' }}</strong></li>
-    <!-- also you need to add this to app.module: registerLocaleData(localeFr, 'fr'); -->
+  <li>
+    demoDate original <strong>{{ demoDate }}</strong>
+  </li>
+  <li>
+    demoDate | date <strong>{{ demoDate | date }}</strong>
+  </li>
+  <li>
+    demoDate | date:'short' <strong>{{ demoDate | date: 'short' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'medium' <strong>{{ demoDate | date: 'medium' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'long' <strong>{{ demoDate | date: 'long' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'full' <strong>{{ demoDate | date: 'full' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'EEEE, MMMM d, y, h:mm:ss a zzzz' <strong>{{ demoDate | date: 'EEEE, MMMM d, y, h:mm:ss a zzzz' }}</strong>
+  </li>
+  <li>---</li>
+  <li>
+    demoDate | date:'shortDate' <strong>{{ demoDate | date: 'shortDate' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'mediumDate' <strong>{{ demoDate | date: 'mediumDate' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'longDate' <strong>{{ demoDate | date: 'longDate' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'fullDate' <strong>{{ demoDate | date: 'fullDate' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'EEEE, MMMM d, y' <strong>{{ demoDate | date: 'EEEE, MMMM d, y' }}</strong>
+  </li>
+  <li>---</li>
+  <li>
+    demoDate | date:'shortTime' <strong>{{ demoDate | date: 'shortTime' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'mediumTime' <strong>{{ demoDate | date: 'mediumTime' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'longTime' <strong>{{ demoDate | date: 'longTime' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'fullTime' <strong>{{ demoDate | date: 'fullTime' }}</strong>
+  </li>
+  <li>
+    demoDate | date:'h:mm:ss a zzzz' <strong>{{ demoDate | date: 'h:mm:ss a zzzz' }}</strong>
+  </li>
+  <li>---</li>
+  <li>
+    demoDate | date:'full':'+0200':'fr' <strong>{{ demoDate | date: 'full':'+0200':'fr' }}</strong>
+  </li>
+  <!-- also you need to add this to app.module: registerLocaleData(localeFr, 'fr'); -->
 </ul>
 
-<h3><a href="https://angular.io/api/common/JsonPipe" target="_blank">JSON transform</a></h3>
+<h3>
+  <a
+    href="https://angular.io/api/common/JsonPipe"
+    target="_blank"
+    >JSON transform</a
+  >
+</h3>
 
 <ul>
-    <li>demoJson original <strong>{{ demoJson }}</strong></li>
-    <li>demoJson | json <strong>{{ demoJson | json }}</strong></li>
+  <li>
+    demoJson original <strong>{{ demoJson }}</strong>
+  </li>
+  <li>
+    demoJson | json <strong>{{ demoJson | json }}</strong>
+  </li>
 </ul>
 
-
-<h3><a href="https://angular.io/api/common/AsyncPipe" target="_blank">Async pipe</a></h3>
+<h3>
+  <a
+    href="https://angular.io/api/common/AsyncPipe"
+    target="_blank"
+    >Async pipe</a
+  >
+</h3>
 
 <ul>
-    <li>demoObservable$ original <strong>{{ demoObservable$ }}</strong></li>
-    <li>demoObservable$ | async <strong>{{ demoObservable$ | async }}</strong></li>
+  <li>
+    demoObservable$ original <strong>{{ demoObservable$ }}</strong>
+  </li>
+  <li>
+    demoObservable$ | async <strong>{{ demoObservable$ | async }}</strong>
+  </li>
 </ul>
-
 
 <h3>Custom pipe</h3>
 
 <ul>
-    <li>demoString original <strong>{{ demoString }}</strong></li>
-    <li>demoString | wrapper <strong>{{ demoString | wrapper }}</strong></li>
-    <li>demoString | wrapper:'pre-' <strong>{{ demoString | wrapper:'pre-' }}</strong></li>
-    <li>demoString | wrapper:'pre-':'-post' <strong>{{ demoString | wrapper:'pre-':'-post' }}</strong></li>
+  <li>
+    demoString original <strong>{{ demoString }}</strong>
+  </li>
+  <li>
+    demoString | wrapper <strong>{{ demoString | wrapper }}</strong>
+  </li>
+  <li>
+    demoString | wrapper:'pre-' <strong>{{ demoString | wrapper: 'pre-' }}</strong>
+  </li>
+  <li>
+    demoString | wrapper:'pre-':'-post' <strong>{{ demoString | wrapper: 'pre-':'-post' }}</strong>
+  </li>
 </ul>

@@ -19,10 +19,10 @@ export class ObservablesComponent implements OnInit, OnDestroy {
   subjectCounter = 0;
   subjectMsg = '';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.customObservable$ = new Observable(observer => {
+    this.customObservable$ = new Observable((observer) => {
       let count = 0;
       setInterval(() => {
         observer.next(count);
@@ -37,13 +37,16 @@ export class ObservablesComponent implements OnInit, OnDestroy {
     });
 
     this.customObsSub = this.customObservable$.subscribe(
-      (data) => { // next callback
+      (data) => {
+        // next callback
         console.log('customObservable$ value = ', data);
       },
-      (error) => { // error callback
+      (error) => {
+        // error callback
         console.log('customObservable$ error = ', error);
       },
-      () => { // complete callback
+      () => {
+        // complete callback
         console.log('customObservable$ completed');
       }
     );
@@ -60,10 +63,9 @@ export class ObservablesComponent implements OnInit, OnDestroy {
         console.log(data);
       });
 
-    this.subjectSub = this.subject$
-      .subscribe((data) => {
-        this.subjectMsg = data;
-      });
+    this.subjectSub = this.subject$.subscribe((data) => {
+      this.subjectMsg = data;
+    });
   }
 
   intervalUnsubscribe() {
@@ -86,5 +88,4 @@ export class ObservablesComponent implements OnInit, OnDestroy {
       this.subjectSub.unsubscribe();
     }
   }
-
 }

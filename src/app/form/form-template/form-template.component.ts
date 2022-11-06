@@ -15,15 +15,13 @@ export class FormTemplateComponent implements OnInit {
 
   @Output() userDataEvt = new EventEmitter<object>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit(formObj: any) {
     // this.userDataEvt.emit(this.modelData);
     console.log(this.modelData);
     formObj.reset(this.formDefaults);
   }
-
 }

@@ -8,12 +8,10 @@ import { AuthService } from '@app/cms-admin/services/auth.service';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent implements OnInit {
-
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.logout();
     this.router.navigate(['/account', 'login']);
   }
-
 }

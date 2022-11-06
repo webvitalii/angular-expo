@@ -8,7 +8,6 @@ import { CustomValidators } from './custom.validators';
   styleUrls: ['./form-reactive.component.scss']
 })
 export class FormReactiveComponent implements OnInit {
-
   form: UntypedFormGroup;
 
   private formDefaults = {
@@ -24,23 +23,17 @@ export class FormReactiveComponent implements OnInit {
 
   forbiddenUsernamesL = ['admin', 'user', 'test'];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.form = new UntypedFormGroup({
       username: new UntypedFormControl(null, [
         Validators.required,
         Validators.maxLength(15),
-        Validators.pattern('^[a-zA-Z0-9\-\_]+$'),
+        Validators.pattern('^[a-zA-Z0-9-_]+$'),
         CustomValidators.forbiddenUsernames
       ]),
-      email: new UntypedFormControl(null,
-        [
-          Validators.required,
-          Validators.email
-        ],
-        [CustomValidators.forbiddenEmailAsync]
-      ),
+      email: new UntypedFormControl(null, [Validators.required, Validators.email], [CustomValidators.forbiddenEmailAsync]),
       gender: new UntypedFormControl(null, Validators.required)
     });
     this.form.patchValue(this.formDefaults);
@@ -54,5 +47,4 @@ export class FormReactiveComponent implements OnInit {
     console.log(this.form.value);
     this.form.reset(this.formDefaults);
   }
-
 }

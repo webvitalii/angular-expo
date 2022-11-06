@@ -1,14 +1,20 @@
 <div class="input-group">
-  <button class="btn"
-  [ngClass]="{
-    'btn-secondary': state === 'on',
-    'btn-outline-secondary': state !== 'on'
-  }"
-  (click)="setState('on')">On</button>
-  <button class="btn"
-  [ngClass]="{
-    'btn-secondary': state === 'off',
-    'btn-outline-secondary': state !== 'off'
-  }"
-  (click)="setState('off')">Off</button>
+  <button
+    class="btn"
+    [ngClass]="{
+      'btn-secondary': state === 'on',
+      'btn-outline-secondary': state !== 'on'
+    }"
+    (click)="setState('on')">
+    On
+  </button>
+  <button
+    class="btn"
+    [ngClass]="{
+      'btn-secondary': state === 'off',
+      'btn-outline-secondary': state !== 'off'
+    }"
+    (click)="setState('off')">
+    Off
+  </button>
 </div>

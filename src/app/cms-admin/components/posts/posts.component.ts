@@ -9,13 +9,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit, OnDestroy {
-
   posts: PostInterface[] = [];
   postSub: Subscription;
   deleteSub: Subscription;
 
-  constructor(private postService: PostService) {
-  }
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
     this.postSub = this.postService.getAll().subscribe((posts) => {
@@ -25,7 +23,7 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   remove(id: string) {
     this.deleteSub = this.postService.remove(id).subscribe(() => {
-      this.posts = this.posts.filter(post => post.id !== id);
+      this.posts = this.posts.filter((post) => post.id !== id);
     });
   }
 
@@ -38,5 +36,4 @@ export class PostsComponent implements OnInit, OnDestroy {
       this.deleteSub.unsubscribe();
     }
   }
-
 }

@@ -8,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DirectivesComponent implements OnInit {
   isVisibile = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

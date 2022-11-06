@@ -8,7 +8,6 @@ import { NotificationUtil } from '@core/utils/notification.util';
 import { PostService } from '@core/services/post.service';
 import { PostInterface } from '@core/interfaces/post.interface';
 
-
 @Component({
   selector: 'app-post-edit',
   templateUrl: './post-edit.component.html',
@@ -20,25 +19,22 @@ export class PostEditComponent implements OnInit, OnDestroy {
 
   updateSub: Subscription;
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private postService: PostService,
-    private notificationUtil: NotificationUtil
-  ) {
-  }
+  constructor(private activatedRoute: ActivatedRoute, private postService: PostService, private notificationUtil: NotificationUtil) {}
 
   ngOnInit() {
-    this.activatedRoute.paramMap.pipe(
-      switchMap((params: ParamMap) => {
-        return this.postService.getById(params.get('id'));
-      })
-    ).subscribe((post: PostInterface) => {
-      this.post = post;
-      this.form = new UntypedFormGroup({
-        title: new UntypedFormControl(post.title, Validators.required),
-        text: new UntypedFormControl(post.text, Validators.required)
+    this.activatedRoute.paramMap
+      .pipe(
+        switchMap((params: ParamMap) => {
+          return this.postService.getById(params.get('id'));
+        })
+      )
+      .subscribe((post: PostInterface) => {
+        this.post = post;
+        this.form = new UntypedFormGroup({
+          title: new UntypedFormControl(post.title, Validators.required),
+          text: new UntypedFormControl(post.text, Validators.required)
+        });
       });
-    });
     /* Old way. Params attribute might be deprecated in the future
     https://angular.io/guide/deprecations#activatedroute-params-and-queryparams-properties
     this.activatedRoute.params.pipe(
@@ -59,13 +55,15 @@ export class PostEditComponent implements OnInit, OnDestroy {
       return false;
     }
 
-    this.updateSub = this.postService.update({
-      ...this.post,
-      text: this.form.get('text').value,
-      title: this.form.get('title').value
-    }).subscribe(() => {
-      this.notificationUtil.open('Updated successfully');
-    });
+    this.updateSub = this.postService
+      .update({
+        ...this.post,
+        text: this.form.get('text').value,
+        title: this.form.get('title').value
+      })
+      .subscribe(() => {
+        this.notificationUtil.open('Updated successfully');
+      });
   }
 
   ngOnDestroy() {
@@ -73,5 +71,4 @@ export class PostEditComponent implements OnInit, OnDestroy {
       this.updateSub.unsubscribe();
     }
   }
-
 }

@@ -8,31 +8,11 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { ReversePipe } from './pipes/reverse.pipe';
 
-
-const sharedComponents = [
-  LoadingComponent,
-  OrderByPipe,
-  ReversePipe
-];
+const sharedComponents = [LoadingComponent, OrderByPipe, ReversePipe];
 
 @NgModule({
-  declarations: [
-    ...sharedComponents
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule
-  ],
-  exports: [
-    ...sharedComponents,
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule
-]
+  declarations: [...sharedComponents],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MaterialModule],
+  exports: [...sharedComponents, CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MaterialModule]
 })
-export class SharedModule { }
+export class SharedModule {}

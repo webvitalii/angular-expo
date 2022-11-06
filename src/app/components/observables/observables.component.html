@@ -1,11 +1,20 @@
-
 <p>customObservable$ = {{ customObservable$ | async }}</p>
 
-<p>interval$ = {{ interval$ | async }}<br>
+<p>
+  interval$ = {{ interval$ | async }}<br />
   intervalOutput (even only and formatted) = {{ intervalOutput }}
-  <button class="btn btn-secondary btn-sm" (click)="intervalUnsubscribe()">Unsubscribe</button>
+  <button
+    class="btn btn-secondary btn-sm"
+    (click)="intervalUnsubscribe()">
+    Unsubscribe
+  </button>
 </p>
 
-<p>subjectMsg = {{ subjectMsg }}
-  <button class="btn btn-secondary btn-sm" (click)="next()">Next</button>
+<p>
+  subjectMsg = {{ subjectMsg }}
+  <button
+    class="btn btn-secondary btn-sm"
+    (click)="next()">
+    Next
+  </button>
 </p>

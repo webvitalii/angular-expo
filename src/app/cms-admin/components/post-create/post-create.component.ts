@@ -11,10 +11,7 @@ import { PostService } from '@core/services/post.service';
 export class PostCreateComponent implements OnInit {
   form: UntypedFormGroup;
 
-  constructor(
-    private postService: PostService
-  ) {
-  }
+  constructor(private postService: PostService) {}
 
   ngOnInit(): void {
     this.form = new UntypedFormGroup({
@@ -38,5 +35,4 @@ export class PostCreateComponent implements OnInit {
       this.form.reset();
     });
   }
-
 }

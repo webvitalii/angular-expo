@@ -37,23 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [],
-  imports: [
-    MatButtonModule,
-    MatIconModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatSnackBarModule,
-    MatTabsModule,
-    MatToolbarModule
-  ],
-  exports: [
-    MatButtonModule,
-    MatIconModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatSnackBarModule,
-    MatTabsModule,
-    MatToolbarModule
-  ]
+  imports: [MatButtonModule, MatIconModule, MatInputModule, MatProgressSpinnerModule, MatSnackBarModule, MatTabsModule, MatToolbarModule],
+  exports: [MatButtonModule, MatIconModule, MatInputModule, MatProgressSpinnerModule, MatSnackBarModule, MatTabsModule, MatToolbarModule]
 })
 export class MaterialModule {}

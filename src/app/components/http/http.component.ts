@@ -7,10 +7,9 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
   styleUrls: ['./http.component.scss']
 })
 export class HttpComponent implements OnInit {
-
   httpData$;
   httpPosts$;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     // The proxy server receives the https://joke-api-strict-cors.appspot.com/jokes/random
@@ -20,5 +19,4 @@ export class HttpComponent implements OnInit {
 
     this.httpPosts$ = this.http.get('https://jsonplaceholder.typicode.com/posts?_limit=3');
   }
-
 }

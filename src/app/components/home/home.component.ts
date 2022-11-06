@@ -8,14 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   appState = 'off';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 
   handleModelChange() {
     console.log('appState = ', this.appState);
   }
-
 }

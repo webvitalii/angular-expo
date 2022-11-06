@@ -11,7 +11,9 @@ import { AuthGuard } from './services/auth.guard';
 
 const routesAdmin: Routes = [
   {
-    path: '', component: LayoutAdminComponent, children: [
+    path: '',
+    component: LayoutAdminComponent,
+    children: [
       { path: '', redirectTo: '/admin/posts', pathMatch: 'full' },
       { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
       { path: 'post-create', component: PostCreateComponent, canActivate: [AuthGuard] },
@@ -21,24 +23,9 @@ const routesAdmin: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routesAdmin),
-    SharedModule
-  ],
-  exports: [
-    RouterModule
-  ],
-  declarations: [
-    LayoutAdminComponent,
-    PostsComponent,
-    PostEditComponent,
-    PostCreateComponent
-  ],
-  providers: [
-    AuthService,
-    AuthGuard
-  ]
+  imports: [RouterModule.forChild(routesAdmin), SharedModule],
+  exports: [RouterModule],
+  declarations: [LayoutAdminComponent, PostsComponent, PostEditComponent, PostCreateComponent],
+  providers: [AuthService, AuthGuard]
 })
-export class CMSAdminModule {
-
-}
+export class CMSAdminModule {}

@@ -1,7 +1,6 @@
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 
-import {ANIMATION_SLIDER_ROUTE} from './slider/slider.route';
-
+import { ANIMATION_SLIDER_ROUTE } from './slider/slider.route';
 
 export const ANIMATION_ROUTE: Routes = [
   {

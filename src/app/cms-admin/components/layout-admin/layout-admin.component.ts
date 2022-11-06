@@ -7,10 +7,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./layout-admin.component.scss']
 })
 export class LayoutAdminComponent implements OnInit {
+  constructor(public authService: AuthService) {}
 
-  constructor(public authService: AuthService) { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

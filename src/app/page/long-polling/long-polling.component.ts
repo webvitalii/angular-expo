@@ -1,8 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
-import {merge, Subject, Subscription, timer} from 'rxjs';
-import {mergeMap} from 'rxjs/operators';
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { merge, Subject, Subscription, timer } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-long-polling',
@@ -15,13 +14,12 @@ export class LongPollingComponent implements OnInit, OnDestroy {
   userClickSubj = new Subject();
   postData = {};
 
-  constructor(protected httpClient: HttpClient) {
-  }
+  constructor(protected httpClient: HttpClient) {}
 
   ngOnInit(): void {
     // https://blog.strongbrew.io/rxjs-polling/
     this.dashboardSub = merge(timer(0, this.TIMEOUT_IN_SEC * 1000), this.userClickSubj)
-      .pipe(mergeMap(_ => this.getData()))
+      .pipe(mergeMap((_) => this.getData()))
       .subscribe(
         (res: HttpResponse<any>) => {
           console.log('Result: ', res);

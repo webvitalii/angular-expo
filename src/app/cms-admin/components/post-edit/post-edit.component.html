@@ -1,10 +1,14 @@
 <h1>Update Post</h1>
 
-
-<form [formGroup]="form" (ngSubmit)="submit()">
-
+<form
+  [formGroup]="form"
+  (ngSubmit)="submit()">
   <div>
-    <label for="inputTitleId" class="form-label">Title</label>
+    <label
+      for="inputTitleId"
+      class="form-label"
+      >Title</label
+    >
   </div>
   <div class="mb-3">
     <input
@@ -13,16 +17,22 @@
       id="inputTitleId"
       formControlName="title"
       [ngClass]="{
-          'is-valid': form.controls.title.valid && form.controls.title.touched,
-          'is-invalid': form.controls.title.invalid && form.controls.title.touched
-      }">
+        'is-valid': form.controls.title.valid && form.controls.title.touched,
+        'is-invalid': form.controls.title.invalid && form.controls.title.touched
+      }" />
     <div
       *ngIf="!form.get('title').valid && form.get('title').touched"
-      class="invalid-feedback">Title is required.</div>
+      class="invalid-feedback">
+      Title is required.
+    </div>
   </div>
 
   <div>
-    <label for="inputTextId" class="form-label">Text</label>
+    <label
+      for="inputTextId"
+      class="form-label"
+      >Text</label
+    >
   </div>
   <div class="mb-3">
     <input
@@ -31,17 +41,20 @@
       id="inputTextId"
       formControlName="text"
       [ngClass]="{
-          'is-valid': form.controls.text.valid && form.controls.text.touched,
-          'is-invalid': form.controls.text.invalid && form.controls.text.touched
-      }">
+        'is-valid': form.controls.text.valid && form.controls.text.touched,
+        'is-invalid': form.controls.text.invalid && form.controls.text.touched
+      }" />
     <div
       *ngIf="!form.get('text').valid && form.get('text').touched"
-      class="invalid-feedback">Text is required.</div>
+      class="invalid-feedback">
+      Text is required.
+    </div>
   </div>
 
   <button
     type="submit"
     class="btn btn-lg btn-primary"
-    [disabled]="form.invalid"
-  >Update Post</button>
+    [disabled]="form.invalid">
+    Update Post
+  </button>
 </form>

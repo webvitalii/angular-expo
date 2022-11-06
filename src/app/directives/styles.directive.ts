@@ -4,10 +4,10 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/
   selector: '[appStyles]'
 })
 export class StylesDirective {
-  private stylesDefault = {color: 'green', border: '1px solid blue'};
-  @Input('appStyles') styles: {color: string, border: string};
+  private stylesDefault = { color: 'green', border: '1px solid blue' };
+  @Input('appStyles') styles: { color: string; border: string };
 
-  constructor(private elemRef: ElementRef, private renderer: Renderer2) { }
+  constructor(private elemRef: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('click', ['$event']) onClick(event: Event) {
     console.log(event);
@@ -19,7 +19,6 @@ export class StylesDirective {
     this.elemRef.nativeElement.style.color = this.styles?.color || this.stylesDefault.color;
     // this.renderer.setStyle(this.elemRef.nativeElement, 'border', this.styles.border);
     this.elemRef.nativeElement.style.border = this.styles?.border || this.stylesDefault.border;
-
   }
 
   @HostListener('mouseleave') onLeave() {
@@ -29,5 +28,4 @@ export class StylesDirective {
     // this.renderer.setStyle(this.elemRef.nativeElement, 'border', null);
     this.elemRef.nativeElement.style.border = null;
   }
-
 }

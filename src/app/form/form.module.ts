@@ -7,16 +7,8 @@ import { FormReactiveComponent } from './form-reactive/form-reactive.component';
 import { FormReactiveAddRemoveComponent } from './form-reactive-add-remove/form-reactive-add-remove.component';
 import { FormTemplateComponent } from './form-template/form-template.component';
 
-
 @NgModule({
-  declarations: [
-    FormReactiveComponent,
-    FormReactiveAddRemoveComponent,
-    FormTemplateComponent
-  ],
-  imports: [
-    RouterModule.forChild(FORM_ROUTE),
-    SharedModule
-  ]
+  declarations: [FormReactiveComponent, FormReactiveAddRemoveComponent, FormTemplateComponent],
+  imports: [RouterModule.forChild(FORM_ROUTE), SharedModule]
 })
-export class FormModule { }
+export class FormModule {}

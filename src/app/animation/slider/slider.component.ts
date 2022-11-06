@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {animationList} from '@core/animations/animations';
-
+import { animationList } from '@core/animations/animations';
 
 @Component({
   selector: 'app-slider',
@@ -10,20 +9,13 @@ import {animationList} from '@core/animations/animations';
   animations: [...animationList]
 })
 export class SliderComponent implements OnInit {
-  sliderList = [
-    'First one 1',
-    'Second item 2',
-    'Third one 3',
-    'Fourth item 4'
-  ];
+  sliderList = ['First one 1', 'Second item 2', 'Third one 3', 'Fourth item 4'];
   sliderIndex = 1;
   isVisible = true;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   prevItem() {
     this.sliderIndex--;
@@ -38,5 +30,4 @@ export class SliderComponent implements OnInit {
       this.sliderIndex = this.sliderList.length;
     }
   }
-
 }

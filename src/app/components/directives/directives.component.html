@@ -1,22 +1,32 @@
 <h2>
-  <a href="https://angular.io/guide/attribute-directives" target="_blank">Attribute Directives</a>
+  <a
+    href="https://angular.io/guide/attribute-directives"
+    target="_blank"
+    >Attribute Directives</a
+  >
 </h2>
 
 <h4 [appHilite]>Directive demo without param. Fallback to default. Hover to test it.</h4>
 
 <h4 [appHilite]="'blue'">Directive demo with param. Hover to test it.</h4>
 
-
 <h4 [appStyles]>Directive demo without params. Fallback to defaults. Hover to test it.</h4>
 
-<h4 [appStyles]="{color: 'red', border: '1px solid orange'}">Directive demo with params. Hover to test it.</h4>
-
+<h4 [appStyles]="{ color: 'red', border: '1px solid orange' }">Directive demo with params. Hover to test it.</h4>
 
 <h2>
-  <a href="https://angular.io/guide/structural-directives" target="_blank">Structural Directives</a>
+  <a
+    href="https://angular.io/guide/structural-directives"
+    target="_blank"
+    >Structural Directives</a
+  >
 </h2>
 
-<button class="btn btn-secondary" (click)="isVisibile = !isVisibile">Click to toggle isVisibile</button>
+<button
+  class="btn btn-secondary"
+  (click)="isVisibile = !isVisibile">
+  Click to toggle isVisibile
+</button>
 
 <p *appIfnot="isVisibile">Text block</p>
 <!-- both variants are the same -->

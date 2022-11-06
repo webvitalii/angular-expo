@@ -9,7 +9,7 @@ import { ActivatedRoute, Data } from '@angular/router';
 export class ErrorComponent implements OnInit {
   errorMessage = 'Error.';
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.errorMessage = this.activatedRoute.snapshot.data.message;
@@ -20,5 +20,4 @@ export class ErrorComponent implements OnInit {
       }
     );*/
   }
-
 }

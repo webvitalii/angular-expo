@@ -7,10 +7,9 @@ import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormArray } fr
   styleUrls: ['./form-reactive-add-remove.component.scss']
 })
 export class FormReactiveAddRemoveComponent implements OnInit {
-
   form: UntypedFormGroup;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.form = new UntypedFormGroup({
@@ -40,13 +39,8 @@ export class FormReactiveAddRemoveComponent implements OnInit {
   addUserListControl(nameValue, phoneValue) {
     const newUserListRow = new UntypedFormGroup({
       name: new UntypedFormControl(nameValue, [Validators.required]),
-      phone: new UntypedFormControl(phoneValue, [
-        Validators.required,
-        Validators.maxLength(10),
-        Validators.pattern('^[0-9]+$')
-      ]),
+      phone: new UntypedFormControl(phoneValue, [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')])
     });
     (this.form.get('userList') as UntypedFormArray).push(newUserListRow);
   }
-
 }

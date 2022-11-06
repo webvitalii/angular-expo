@@ -1,9 +1,15 @@
 <section class="page-long-polling">
   <h1>Long polling</h1>
 
-  <p>The request happen every <strong>{{ TIMEOUT_IN_SEC }}</strong> seconds or after click on the button.</p>
+  <p>
+    The request happen every <strong>{{ TIMEOUT_IN_SEC }}</strong> seconds or after click on the button.
+  </p>
 
-  <button class="btn btn-secondary" (click)="getNow()">Get random post now</button>
+  <button
+    class="btn btn-secondary"
+    (click)="getNow()">
+    Get random post now
+  </button>
 
   <h4>Random post data:</h4>
   <pre>

@@ -9,7 +9,9 @@ import { PostComponent } from './components/post/post.component';
 
 const routesCMS: Routes = [
   {
-    path: '', component: LayoutComponent, children: [
+    path: '',
+    component: LayoutComponent,
+    children: [
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: '', component: PostsComponent },
       { path: 'post/:id', component: PostComponent }
@@ -18,20 +20,8 @@ const routesCMS: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routesCMS),
-    SharedModule
-  ],
-  exports: [
-    RouterModule
-  ],
-  declarations: [
-    LayoutComponent,
-    PostsComponent,
-    PostComponent
-  ]
+  imports: [CommonModule, RouterModule.forChild(routesCMS), SharedModule],
+  exports: [RouterModule],
+  declarations: [LayoutComponent, PostsComponent, PostComponent]
 })
-export class CMSModule {
-
-}
+export class CMSModule {}

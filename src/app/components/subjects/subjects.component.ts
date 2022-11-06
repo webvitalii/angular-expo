@@ -28,16 +28,15 @@ export class SubjectsComponent implements OnInit {
   public asyncSubjectSubscribersValues: number[][] = [];
   public asyncSubjectCounter = 1;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   subjectSubscribe() {
     this.subjectSubscriberIndex++;
     const subscriberValues = [];
-    this.subjectSubscribersValues.push(subscriberValues)
-    this.subject.subscribe(value => subscriberValues.push(value));
+    this.subjectSubscribersValues.push(subscriberValues);
+    this.subject.subscribe((value) => subscriberValues.push(value));
   }
 
   subjectEmitValue() {
@@ -48,12 +47,11 @@ export class SubjectsComponent implements OnInit {
     this.subject.complete();
   }
 
-
   behaviorSubjectSubscribe() {
     this.behaviorSubjectSubscriberIndex++;
     const subscriberValues = [];
-    this.behaviorSubjectSubscribersValues.push(subscriberValues)
-    this.behaviorSubject.subscribe(value => subscriberValues.push(value));
+    this.behaviorSubjectSubscribersValues.push(subscriberValues);
+    this.behaviorSubject.subscribe((value) => subscriberValues.push(value));
   }
 
   behaviorSubjectEmitValue() {
@@ -64,12 +62,11 @@ export class SubjectsComponent implements OnInit {
     this.behaviorSubject.complete();
   }
 
-
   replaySubjectSubscribe() {
     this.replaySubjectSubscriberIndex++;
     const subscriberValues = [];
-    this.replaySubjectSubscribersValues.push(subscriberValues)
-    this.replaySubject.subscribe(value => subscriberValues.push(value));
+    this.replaySubjectSubscribersValues.push(subscriberValues);
+    this.replaySubject.subscribe((value) => subscriberValues.push(value));
   }
 
   replaySubjectEmitValue() {
@@ -80,12 +77,11 @@ export class SubjectsComponent implements OnInit {
     this.replaySubject.complete();
   }
 
-
   asyncSubjectSubscribe() {
     this.asyncSubjectSubscriberIndex++;
     const subscriberValues = [];
-    this.asyncSubjectSubscribersValues.push(subscriberValues)
-    this.asyncSubject.subscribe(value => subscriberValues.push(value));
+    this.asyncSubjectSubscribersValues.push(subscriberValues);
+    this.asyncSubject.subscribe((value) => subscriberValues.push(value));
   }
 
   asyncSubjectEmitValue() {

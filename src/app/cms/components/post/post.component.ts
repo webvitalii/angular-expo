@@ -13,16 +13,14 @@ import { PostService } from '@core/services/post.service';
 export class PostComponent implements OnInit {
   post$: Observable<PostInterface>;
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private postService: PostService
-  ) { }
+  constructor(private activatedRoute: ActivatedRoute, private postService: PostService) {}
 
   ngOnInit(): void {
-    this.post$ = this.activatedRoute.paramMap
-      .pipe(switchMap((params: ParamMap) => {
+    this.post$ = this.activatedRoute.paramMap.pipe(
+      switchMap((params: ParamMap) => {
         return this.postService.getById(params.get('id'));
-      }));
+      })
+    );
 
     /* Old way. Params attribute might be deprecated in the future
     https://angular.io/guide/deprecations#activatedroute-params-and-queryparams-properties
@@ -31,5 +29,4 @@ export class PostComponent implements OnInit {
         return this.postService.getById(params.id);
       })); */
   }
-
 }

@@ -1,19 +1,17 @@
-import { Component , Input , OnChanges , Output , EventEmitter} from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-
 export class PaginationComponent implements OnChanges {
-
   @Input() totalRecords = 0;
   @Input() recordsPerPage = 0;
 
   @Output() pageChange: EventEmitter<number> = new EventEmitter();
 
-  public pages: number [] = [];
+  public pages: number[] = [];
   activePage: number;
 
   ngOnChanges(): any {
@@ -23,7 +21,7 @@ export class PaginationComponent implements OnChanges {
     this.pageChange.emit(1);
   }
 
-  private  getPageCount(): number {
+  private getPageCount(): number {
     let totalPage = 0;
 
     if (this.totalRecords > 0 && this.recordsPerPage > 0) {
@@ -36,7 +34,7 @@ export class PaginationComponent implements OnChanges {
     return totalPage;
   }
 
-  private getArrayOfPage(pageCount: number): number [] {
+  private getArrayOfPage(pageCount: number): number[] {
     const pageArray = [];
 
     if (pageCount > 0) {

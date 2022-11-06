@@ -6,7 +6,7 @@ export const environment = {
     authDomain: 'angular-expo.firebaseapp.com',
     databaseURL: 'https://angular-expo.firebaseio.com',
     projectId: 'angular-expo',
-    storageBucket: 'angular-expo.appspot.com',
+    storageBucket: 'angular-expo.appspot.com'
     // messagingSenderId: '197890464790',
     // appId: '1:197890464790:web:b672a510c3a1e3da44e937',
     // measurementId: 'G-JRR3YMLGBT'

@@ -9,7 +9,6 @@ import { StyleGuideIconComponent } from './style-guide-icon/style-guide-icon.com
 import { StyleGuideNavComponent } from './style-guide-nav/style-guide-nav.component';
 import { STYLE_GUIDE_ROUTE } from './style-guide.route';
 
-
 @NgModule({
   declarations: [
     StyleGuideTypographyComponent,
@@ -18,9 +17,6 @@ import { STYLE_GUIDE_ROUTE } from './style-guide.route';
     StyleGuideIconComponent,
     StyleGuideNavComponent
   ],
-  imports: [
-    SharedModule,
-    RouterModule.forChild(STYLE_GUIDE_ROUTE)
-  ]
+  imports: [SharedModule, RouterModule.forChild(STYLE_GUIDE_ROUTE)]
 })
-export class StyleGuideModule { }
+export class StyleGuideModule {}

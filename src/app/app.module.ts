@@ -40,8 +40,6 @@ import { FooterComponent } from './layout/footer/footer.component';
 
 registerLocaleData(localeFr, 'fr');
 
-
-
 @NgModule({
   declarations: [
     ErrorComponent,
@@ -69,20 +67,14 @@ registerLocaleData(localeFr, 'fr');
     HeaderComponent,
     FooterComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    CoreModule,
-    SharedModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, CoreModule, SharedModule],
   exports: [],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }, 
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: NetworkInterceptor,
@@ -91,4 +83,4 @@ registerLocaleData(localeFr, 'fr');
   ],
   bootstrap: [MainComponent]
 })
-export class AppModule { }
+export class AppModule {}

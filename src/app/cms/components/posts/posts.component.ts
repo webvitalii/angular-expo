@@ -11,10 +11,9 @@ import { PostService } from '@core/services/post.service';
 export class PostsComponent implements OnInit {
   posts$: Observable<PostInterface[]>;
 
-  constructor(public postService: PostService) { }
+  constructor(public postService: PostService) {}
 
   ngOnInit(): void {
     this.posts$ = this.postService.getAll();
   }
-
 }

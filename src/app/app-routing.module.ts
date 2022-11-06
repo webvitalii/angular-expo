@@ -15,9 +15,8 @@ import { ViewerComponent } from './components/viewer/viewer.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { HttpComponent } from './components/http/http.component';
 import { ErrorComponent } from './components/error/error.component';
-import {AnimationModule} from '@app/animation/animation.module';
-import {PageModule} from '@app/page/page.module';
-
+import { AnimationModule } from '@app/animation/animation.module';
+import { PageModule } from '@app/page/page.module';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -65,7 +64,7 @@ const routes: Routes = [
   { path: 'viewer', component: ViewerComponent },
   { path: 'todos', component: TodosComponent },
   { path: 'http', component: HttpComponent },
-  { path: 'not-found', component: ErrorComponent, data: {message: 'Page Not Found'} },
+  { path: 'not-found', component: ErrorComponent, data: { message: 'Page Not Found' } },
   { path: '**', redirectTo: 'not-found' }
 ];
 
@@ -73,4 +72,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

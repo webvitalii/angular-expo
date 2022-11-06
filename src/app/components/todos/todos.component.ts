@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoInterface, TodosService } from './todos.service';
 
-
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
@@ -13,8 +12,7 @@ export class TodosComponent implements OnInit {
   loading = false;
   error = '';
 
-
-  constructor(private todosService: TodosService) { }
+  constructor(private todosService: TodosService) {}
 
   ngOnInit(): void {
     this.getTodos();
@@ -22,12 +20,11 @@ export class TodosComponent implements OnInit {
 
   getTodos() {
     this.loading = true;
-    this.todosService.fetchTodos()
-      .subscribe(todos => {
-        console.log('Todos api response', todos);
-        this.todoList = todos;
-        this.loading = false;
-      });
+    this.todosService.fetchTodos().subscribe((todos) => {
+      console.log('Todos api response', todos);
+      this.todoList = todos;
+      this.loading = false;
+    });
   }
 
   addTodo() {
@@ -38,28 +35,28 @@ export class TodosComponent implements OnInit {
       title: this.todoTitle,
       completed: false
     };
-    this.todosService.addTodo(newTodo)
-      .subscribe(todoResponse => {
-        this.todoList.push(todoResponse);
-        this.todoTitle = '';
-      });
+    this.todosService.addTodo(newTodo).subscribe((todoResponse) => {
+      this.todoList.push(todoResponse);
+      this.todoTitle = '';
+    });
   }
 
   removeTodo(todoId: number) {
-    this.todosService.removeTodo(todoId)
-      .subscribe( () => {
-        this.todoList = this.todoList.filter((todo) => todo.id !== todoId);
-      });
+    this.todosService.removeTodo(todoId).subscribe(() => {
+      this.todoList = this.todoList.filter((todo) => todo.id !== todoId);
+    });
   }
 
   completeTodo(todoId: number) {
-    this.todosService.completeTodo(todoId)
-      .subscribe(todoResponse => {
-        const todoUpdated = this.todoList.find(todo => todo.id === todoResponse.id);
+    this.todosService.completeTodo(todoId).subscribe(
+      (todoResponse) => {
+        const todoUpdated = this.todoList.find((todo) => todo.id === todoResponse.id);
         todoUpdated.completed = true;
-      }, error => {
+      },
+      (error) => {
         console.log('Error from TodosComponent:', error);
         this.error = error.message;
-      });
+      }
+    );
   }
 }

@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class LoadingService {
   private loading = new BehaviorSubject<boolean>(false);
