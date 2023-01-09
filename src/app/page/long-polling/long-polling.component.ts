@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { merge, Subject, Subscription, timer } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {merge, Subject, takeUntil, timer} from 'rxjs';
+import {mergeMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-long-polling',
@@ -9,7 +9,7 @@ import { mergeMap } from 'rxjs/operators';
   styleUrls: ['./long-polling.component.scss']
 })
 export class LongPollingComponent implements OnInit, OnDestroy {
-  dashboardSub: Subscription;
+  unsubscribe$ = new Subject<void>();
   TIMEOUT_IN_SEC = 5;
   userClickSubj = new Subject();
   postData = {};
@@ -18,17 +18,21 @@ export class LongPollingComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // https://blog.strongbrew.io/rxjs-polling/
-    this.dashboardSub = merge(timer(0, this.TIMEOUT_IN_SEC * 1000), this.userClickSubj)
+    merge(timer(0, this.TIMEOUT_IN_SEC * 1000), this.userClickSubj)
       .pipe(mergeMap((_) => this.getData()))
-      .subscribe(
-        (res: HttpResponse<any>) => {
-          console.log('Result: ', res);
-          this.postData = res;
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe({
+        next: (response: HttpResponse<any>) => {
+          console.log('Response:', response);
+          this.postData = response;
         },
-        (err: HttpErrorResponse) => {
-          console.log('Error:', err);
+        error: (error: HttpErrorResponse) => {
+          console.log('Error:', error);
+        },
+        complete: () => {
+          console.log('Complete');
         }
-      );
+      });
   }
 
   getData() {
@@ -41,9 +45,7 @@ export class LongPollingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // Unsubscribe to avoid memory leaks
-    if (this.dashboardSub) {
-      this.dashboardSub.unsubscribe();
-    }
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }
