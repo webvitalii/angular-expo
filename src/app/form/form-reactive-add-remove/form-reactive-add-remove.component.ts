@@ -8,6 +8,14 @@ import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormArray } fr
 })
 export class FormReactiveAddRemoveComponent implements OnInit {
   form: UntypedFormGroup;
+  userList = [
+    {
+      name: "Jack", phone: "555777"
+    },
+    {
+      name: "Jane", phone: "444888"
+    }
+  ];
 
   constructor() {}
 
@@ -15,8 +23,10 @@ export class FormReactiveAddRemoveComponent implements OnInit {
     this.form = new UntypedFormGroup({
       userList: new UntypedFormArray([])
     });
-    this.addUserListControl('Jack', 555777);
-    this.addUserListControl('Jane', 444888);
+
+    this.userList?.forEach((userItem) => {
+      this.addUserListControl(userItem);
+    });
   }
 
   onSubmit() {
@@ -25,7 +35,6 @@ export class FormReactiveAddRemoveComponent implements OnInit {
     }
     console.log(this.form);
     console.log(this.form.value);
-    // this.form.reset(this.formDefaults);
   }
 
   getUserListControls() {
@@ -33,13 +42,14 @@ export class FormReactiveAddRemoveComponent implements OnInit {
   }
 
   removeUserListControl(controlIndex: number) {
+    this.userList?.splice(controlIndex, 1);
     (this.form.get('userList') as UntypedFormArray).removeAt(controlIndex);
   }
 
-  addUserListControl(nameValue, phoneValue) {
+  addUserListControl(user) {
     const newUserListRow = new UntypedFormGroup({
-      name: new UntypedFormControl(nameValue, [Validators.required]),
-      phone: new UntypedFormControl(phoneValue, [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')])
+      name: new UntypedFormControl(user?.name, [Validators.required]),
+      phone: new UntypedFormControl(user?.phone, [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')])
     });
     (this.form.get('userList') as UntypedFormArray).push(newUserListRow);
   }
