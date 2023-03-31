@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostInterface } from '@core/interfaces/post.interface';
 import { PostService } from '@core/services/post.service';
 
@@ -9,14 +9,14 @@ import { PostService } from '@core/services/post.service';
   styleUrls: ['./post-create.component.scss']
 })
 export class PostCreateComponent implements OnInit {
-  form: UntypedFormGroup;
+  form: FormGroup;
 
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
-    this.form = new UntypedFormGroup({
-      title: new UntypedFormControl(null, Validators.required),
-      text: new UntypedFormControl(null, Validators.required)
+    this.form = new FormGroup({
+      title: new FormControl(null, Validators.required),
+      text: new FormControl(null, Validators.required)
     });
   }
 

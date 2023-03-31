@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-form-reactive-add-remove',
@@ -7,21 +7,17 @@ import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormArray } fr
   styleUrls: ['./form-reactive-add-remove.component.scss']
 })
 export class FormReactiveAddRemoveComponent implements OnInit {
-  form: UntypedFormGroup;
+  form: FormGroup;
   userList = [
-    {
-      name: "Jack", phone: "555777"
-    },
-    {
-      name: "Jane", phone: "444888"
-    }
+    { name: "Jack", phone: "555777" },
+    { name: "Jane", phone: "444888" }
   ];
 
   constructor() {}
 
   ngOnInit(): void {
-    this.form = new UntypedFormGroup({
-      userList: new UntypedFormArray([])
+    this.form = new FormGroup({
+      userList: new FormArray([])
     });
 
     this.userList?.forEach((userItem) => {
@@ -38,19 +34,19 @@ export class FormReactiveAddRemoveComponent implements OnInit {
   }
 
   getUserListControls() {
-    return (this.form.get('userList') as UntypedFormArray).controls;
+    return (this.form.get('userList') as FormArray).controls;
   }
 
   removeUserListControl(controlIndex: number) {
     this.userList?.splice(controlIndex, 1);
-    (this.form.get('userList') as UntypedFormArray).removeAt(controlIndex);
+    (this.form.get('userList') as FormArray).removeAt(controlIndex);
   }
 
   addUserListControl(user) {
-    const newUserListRow = new UntypedFormGroup({
-      name: new UntypedFormControl(user?.name, [Validators.required]),
-      phone: new UntypedFormControl(user?.phone, [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')])
+    const newUserListRow = new FormGroup({
+      name: new FormControl(user?.name, [Validators.required]),
+      phone: new FormControl(user?.phone, [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')])
     });
-    (this.form.get('userList') as UntypedFormArray).push(newUserListRow);
+    (this.form.get('userList') as FormArray).push(newUserListRow);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from './custom.validators';
 
 @Component({
@@ -8,7 +8,7 @@ import { CustomValidators } from './custom.validators';
   styleUrls: ['./form-reactive.component.scss']
 })
 export class FormReactiveComponent implements OnInit {
-  form: UntypedFormGroup;
+  form: FormGroup;
 
   private formDefaults = {
     username: 'default-username',
@@ -26,15 +26,15 @@ export class FormReactiveComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.form = new UntypedFormGroup({
-      username: new UntypedFormControl(null, [
+    this.form = new FormGroup({
+      username: new FormControl(null, [
         Validators.required,
         Validators.maxLength(15),
         Validators.pattern('^[a-zA-Z0-9-_]+$'),
         CustomValidators.forbiddenUsernames
       ]),
-      email: new UntypedFormControl(null, [Validators.required, Validators.email], [CustomValidators.forbiddenEmailAsync]),
-      gender: new UntypedFormControl(null, Validators.required)
+      email: new FormControl(null, [Validators.required, Validators.email], [CustomValidators.forbiddenEmailAsync]),
+      gender: new FormControl(null, Validators.required)
     });
     this.form.patchValue(this.formDefaults);
   }
