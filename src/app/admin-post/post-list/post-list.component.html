@@ -1,4 +1,13 @@
 <section>
+
+  <p>
+    <a
+      class="btn btn-secondary"
+      [routerLink]="['/admin', 'posts', 'create']">
+      Create
+    </a>
+  </p>
+
   <table
     class="table"
     *ngIf="posts?.length > 0">
@@ -16,11 +25,11 @@
         <td>{{ post.title }}</td>
         <td>{{ post.date | date: 'medium' }}</td>
         <td>
-          <button
+          <a
             class="btn btn-secondary"
-            [routerLink]="['/admin', 'post-edit', post.id]">
+            [routerLink]="['/admin', 'posts', post.id, 'edit']">
             Edit
-          </button>
+          </a>
           <button
             class="btn btn-danger"
             (click)="remove(post.id)">

@@ -1,0 +1,15 @@
+<h1>Update Post</h1>
+
+<p>
+  <a
+    class="btn btn-secondary"
+    [routerLink]="['/admin', 'posts', 'list']">
+    List
+  </a>
+</p>
+
+<ng-container *ngIf="postItem?.id">
+  <app-post-form
+    [postInput]="postItem"
+    (formSubmitEvent)="processFormData($event)"></app-post-form>
+</ng-container>

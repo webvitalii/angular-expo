@@ -18,7 +18,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.post$ = this.activatedRoute.paramMap.pipe(
       switchMap((params: ParamMap) => {
-        return this.postService.getById(params.get('id'));
+        return this.postService.getById(params.get('post_id'));
       })
     );
 

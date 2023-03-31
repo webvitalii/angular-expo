@@ -3,7 +3,7 @@
   class="card">
   <div class="card-body">
     <h4>
-      <a [routerLink]="['/post', post.id]">{{ post.title }}</a>
+      <a [routerLink]="['/posts', post.id, 'view']">{{ post.title }}</a>
     </h4>
     <div class="card-subtitle mb-2 text-muted">{{ post.date | date: 'short' }}</div>
 

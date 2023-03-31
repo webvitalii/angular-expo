@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-
+import { AuthGuard } from '@core/guards/auth.guard';
 import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
 
@@ -70,6 +70,7 @@ registerLocaleData(localeFr, 'fr');
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, CoreModule, SharedModule],
   exports: [],
   providers: [
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

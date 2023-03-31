@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { CMSModule } from '@app/cms/cms.module';
+import { AuthGuard } from '@core/guards/auth.guard';
 import { AccountModule } from '@app/account/account.module';
 import { FormModule } from '@app/form/form.module';
 import { StyleGuideModule } from '@app/style-guide/style-guide.module';
-import { CMSModule } from '@app/cms/cms.module';
 import { CMSAdminModule } from '@app/cms-admin/cms-admin.module';
 import { HomeComponent } from './components/home/home.component';
 import { DirectivesComponent } from './components/directives/directives.component';
@@ -17,6 +17,7 @@ import { HttpComponent } from './components/http/http.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AnimationModule } from '@app/animation/animation.module';
 import { PageModule } from '@app/page/page.module';
+import { AdminPostModule } from './admin-post/admin-post.module';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -29,12 +30,22 @@ const routes: Routes = [
     ]
   }, */
   {
-    path: '',
+    path: 'posts',
     loadChildren: () => CMSModule
   },
   {
     path: 'account',
     loadChildren: () => AccountModule
+  },
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'posts',
+        loadChildren: () => AdminPostModule
+      }
+    ]
   },
   {
     path: 'form',

@@ -12,9 +12,9 @@ const routesCMS: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', redirectTo: '/', pathMatch: 'full' },
+      // { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: '', component: PostsComponent },
-      { path: 'post/:id', component: PostComponent }
+      { path: ':post_id/view', component: PostComponent }
     ]
   }
 ];

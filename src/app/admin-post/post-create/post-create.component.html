@@ -1,0 +1,12 @@
+<h1>Create Post</h1>
+
+<p>
+  <a
+    class="btn btn-secondary"
+    [routerLink]="['/admin', 'posts', 'list']">
+    List
+  </a>
+</p>
+
+<app-post-form
+  (formSubmitEvent)="processFormData($event)"></app-post-form>
