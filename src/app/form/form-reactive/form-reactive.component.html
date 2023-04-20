@@ -8,9 +8,9 @@
       <div class="col-4">
         <label
           for="inputUsernameId"
-          class="form-label"
-          >Username</label
-        >
+          class="form-label">
+          Username
+        </label>
         <div>Validators:</div>
         <ul>
           <li>Required</li>
@@ -22,32 +22,32 @@
       <div class="col-8">
         <input
           type="text"
-          class="form-control"
+          class="fx-input"
           id="inputUsernameId"
           formControlName="username"
           [ngClass]="{
-            'is-valid': form.controls.username.valid && form.controls.username.touched,
-            'is-invalid': form.controls.username.invalid && form.controls.username.touched
+            'fx-input--success': form.controls.username.valid && form.controls.username.touched,
+            'fx-input--danger': form.controls.username.invalid && form.controls.username.touched
           }" />
         <div
-          *ngIf="!form.get('username').valid && form.get('username').touched"
-          class="invalid-feedback">
+          *ngIf="form.get('username').invalid && form.get('username').touched"
+          class="fx-u-color-danger">
           Username is required.
         </div>
         <div
           *ngIf="form.get('username').errors?.pattern"
-          class="invalid-feedback">
+          class="fx-u-color-danger">
           Only letters, numbers, dashes and undersores are allowed.
         </div>
         <div
           *ngIf="form.get('username').errors?.maxlength"
-          class="invalid-feedback">
+          class="fx-u-color-danger">
           {{ form.get('username').errors?.maxlength.requiredLength }} symbols maximum.
           {{ form.get('username').errors?.maxlength.actualLength }} symbols entered.
         </div>
         <div
           *ngIf="form.get('username').errors?.forbiddenUsername"
-          class="invalid-feedback">
+          class="fx-u-color-danger">
           Username cannot be {{ form.get('username').value }}
         </div>
       </div>
@@ -56,9 +56,9 @@
       <div class="col-4">
         <label
           for="inputEmailId"
-          class="form-label"
-          >Email</label
-        >
+          class="form-label">
+          Email
+        </label>
         <div>Validators:</div>
         <ul>
           <li>Required</li>
@@ -69,26 +69,26 @@
       <div class="col-8">
         <input
           type="text"
-          class="form-control"
+          class="fx-input"
           id="inputEmailId"
           formControlName="email"
           [ngClass]="{
-            'is-valid': form.controls.email.valid && form.controls.email.touched,
-            'is-invalid': form.controls.email.invalid && form.controls.email.touched
+            'fx-input--success': form.controls.email.valid && form.controls.email.touched,
+            'fx-input--danger': form.controls.email.invalid && form.controls.email.touched
           }" />
         <div
-          *ngIf="!form.get('email').valid && form.get('email').touched"
-          class="invalid-feedback">
+          *ngIf="form.get('email').invalid && form.get('email').touched"
+          class="fx-u-color-danger">
           Email is required.
         </div>
         <div
           *ngIf="form.get('email').errors?.email"
-          class="invalid-feedback">
+          class="fx-u-color-danger">
           Email is not valid.
         </div>
         <div
           *ngIf="form.get('email').errors?.forbiddenEmail"
-          class="invalid-feedback">
+          class="fx-u-color-danger">
           Email cannot be {{ form.get('email').value }}.
         </div>
       </div>
@@ -97,18 +97,18 @@
       <div class="col-4">
         <label
           for="inputGenderId"
-          class="form-label"
-          >Gender</label
-        >
+          class="form-label">
+          Gender
+        </label>
       </div>
       <div class="col-8">
         <select
-          class="form-select"
+          class="fx-select"
           id="inputGenderId"
           formControlName="gender"
           [ngClass]="{
-            'is-valid': form.controls.gender.valid && form.controls.gender.touched,
-            'is-invalid': form.controls.gender.invalid && form.controls.gender.touched
+            'fx-select--success': form.controls.gender.valid && form.controls.gender.touched,
+            'fx-select--danger': form.controls.gender.invalid && form.controls.gender.touched
           }">
           <option></option>
           <option
@@ -118,9 +118,22 @@
           </option>
         </select>
         <div
-          *ngIf="!form.get('gender').valid && form.get('gender').touched"
-          class="invalid-feedback">
+          *ngIf="form.get('gender').invalid && form.get('gender').touched"
+          class="fx-u-color-danger">
           Gender is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-4"></div>
+      <div class="col-8">
+        <input type="checkbox" id="agreeTerms" formControlName="agreeTerms">
+        <label for="agreeTerms">I agree to the terms and conditions</label>
+        <div 
+          *ngIf="form.get('agreeTerms').invalid && form.get('agreeTerms').touched"
+          class="fx-u-color-danger">
+            <p>You must agree to the terms and conditions to proceed.</p>
         </div>
       </div>
     </div>
@@ -140,4 +153,7 @@
 
   <h3>Form value:</h3>
   <pre>{{ form.value | json }}</pre>
+
+  <h3>Form errors:</h3>
+  <pre>{{ collectFormErrors() | json }}</pre>
 </section>
