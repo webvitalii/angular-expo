@@ -26,7 +26,11 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `ng e2e` to execute the end-to-end tests via [Cypress Test Runner UI](https://www.cypress.io/) (does not require separate ng serve instance).
+
+Run `sudo npx cypress open` to run Cypress Test Runner UI (requires separate ng serve running instance).
+
+Run `sudo npx cypress run --browser chrome` to run all the tests in CLI (requires separate ng serve running instance).
 
 ## Further help
 
