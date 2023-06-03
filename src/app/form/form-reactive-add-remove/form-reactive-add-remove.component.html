@@ -10,7 +10,7 @@
       </div>
       <div class="col-8">
         <div [formArrayName]="'userList'">
-          <div *ngFor="let userListControl of getUserListControls(); let idx = index">
+          <div *ngFor="let userListControl of userListFormArray.controls; let idx = index">
             <div
               class="row mb-3"
               [formGroupName]="idx">
