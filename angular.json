@@ -163,7 +163,6 @@
       }
     }
   },
-  "defaultProject": "angular-expo",
   "cli": {
     "schematicCollections": [
       "@cypress/schematic",
